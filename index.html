@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 日报 - 2026 年 03 月 18 日</title>
+    <title>AI 前沿资讯日报 - 2026 年 03 月 18 日</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Apple System Fonts -->
+    <style>
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC Regular'), local('PingFangSC-Regular');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC Medium'), local('PingFangSC-Medium');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC Semibold'), local('PingFangSC-Semibold');
+            font-weight: 600;
+        }
+    </style>
     
     <style>
         * {
@@ -113,29 +127,12 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
+            font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
             color: var(--text-primary);
-        }
-
-        .logo-img {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3));
-        }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 700;
+            text-decoration: none;
             letter-spacing: -0.02em;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .header-actions {
@@ -219,9 +216,9 @@
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
             font-size: clamp(48px, 10vw, 96px);
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -280,9 +277,9 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
             font-size: clamp(32px, 5vw, 48px);
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--text-primary);
         }
@@ -639,10 +636,7 @@
     <!-- Header -->
     <header class="header" id="header">
         <div class="header-content">
-            <a href="#" class="logo">
-                <img src="logo.png" alt="AI 日报 Logo" class="logo-img">
-                <span class="logo-text">AI 日报</span>
-            </a>
+            <a href="#" class="logo">AI 前沿资讯日报</a>
             <div class="header-actions">
                 <span class="date-badge">2026.03.18</span>
                 <button class="share-btn" onclick="sharePage()">
@@ -667,7 +661,7 @@
             </svg>
             <span>Google 智能直达 · 一键到详情页</span>
         </div>
-        <h1>AI 日报</h1>
+        <h1>AI 前沿资讯日报</h1>
         <p>全球 AI 资讯精选 · 设计前沿洞察</p>
         <p class="hero-date">2026 年 03 月 18 日</p>
     </section>
@@ -1036,7 +1030,7 @@
         // Share function
         function sharePage() {
             const url = window.location.href;
-            const title = 'AI 日报 - 2026 年 03 月 18 日';
+            const title = 'AI 前沿资讯日报 - 2026 年 03 月 18 日';
             
             if (navigator.share) {
                 navigator.share({
