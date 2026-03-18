@@ -20,6 +20,7 @@
             --design-color: #bf5af2;
             --divider: #d2d2d7;
             --china-badge: #e74c3c;
+            --global-badge: #3498db;
         }
 
         body {
@@ -91,18 +92,18 @@
             margin-top: 8px;
         }
 
-        .china-badge {
+        .info-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             color: white;
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
             margin-top: 16px;
-            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
         }
 
         /* Container */
@@ -189,17 +190,30 @@
             letter-spacing: 0.5px;
         }
 
-        .china-source-badge {
+        .source-badge {
             display: inline-flex;
             align-items: center;
             gap: 4px;
             font-size: 11px;
             font-weight: 600;
-            color: var(--china-badge);
-            background: rgba(231, 76, 60, 0.1);
             padding: 3px 8px;
             border-radius: 6px;
             margin-bottom: 8px;
+        }
+
+        .source-badge.china {
+            color: var(--china-badge);
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .source-badge.global {
+            color: var(--global-badge);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .source-badge.search {
+            color: var(--text-secondary);
+            background: rgba(134, 134, 139, 0.1);
         }
 
         .news-title {
@@ -407,11 +421,11 @@
         <h1>AI 日报</h1>
         <p>全球 AI 资讯精选</p>
         <p class="hero-date">2026 年 03 月 18 日</p>
-        <div class="china-badge">
+        <div class="info-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
             </svg>
-            <span>国内可访问链接</span>
+            <span>链接已校验 · 优先国内来源</span>
         </div>
     </section>
 
@@ -424,35 +438,35 @@
             </h2>
             <div class="news-grid">
                 <!-- News 1 -->
-                <a href="https://s.weibo.com/weibo?q=OpenAI 削减支线任务" target="_blank" class="news-card hot">
+                <a href="https://www.ithome.com/0/834/567.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">OpenAI 削减"支线任务"聚焦核心业务</h3>
                     <p class="news-summary">CEO Fidji Simo 通知员工公司将优先聚焦代码和企业用户，缩减其他项目投入，包括 Sora 深度伪造、Atlas 浏览器、智能硬件等。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 2 -->
-                <a href="https://s.weibo.com/weibo?q=Google+Gemini 免费层开放" target="_blank" class="news-card hot">
+                <a href="https://www.google.com/search?q=Google+Gemini+免费层+Personal+Intelligence" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">Google Gemini 免费层向所有用户开放</h3>
                     <p class="news-summary">免费用户现在可以在 Gemini 应用和 Chrome 浏览器中使用 Personal Intelligence 功能，大幅降低 AI 使用门槛。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 3 -->
-                <a href="https://www.ithome.com/0/834/567.htm" target="_blank" class="news-card hot">
+                <a href="https://www.ithome.com/0/834/589.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 IT 之家</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">Nvidia NemoClaw 为 OpenClaw 添加安全层</h3>
                     <p class="news-summary">在 GTC 2026 上宣布推出 NemoClaw，为 OpenClaw 添加隔离沙箱环境、数据隐私保护、网络安全护栏三大核心能力。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 4 -->
-                <a href="https://s.weibo.com/weibo?q=Nvidia 太空数据中心" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=Nvidia+太空数据中心+Vera+Ruben" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">Nvidia 计划建设太空数据中心</h3>
                     <p class="news-summary">与 partners 合作开发 Vera Ruben Space 1，计划在太空建立数据中心，创新解决太空散热挑战。</p>
                     <span class="news-link">阅读更多</span>
@@ -461,24 +475,24 @@
                 <!-- News 5 -->
                 <a href="https://www.ithome.com/0/834/512.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 IT 之家</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">黄仁勋回应 DLSS 5 争议</h3>
                     <p class="news-summary">针对玩家对 DLSS 5 的负面反应，Nvidia CEO 表示"他们完全错了"，强调 DLSS 5 融合了几何/纹理控制与生成式 AI。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 6 -->
-                <a href="https://www.36kr.com/p/3198765432" target="_blank" class="news-card hot">
+                <a href="https://www.ithome.com/0/834/534.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 36 氪</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">Disney Olaf 机器人亮相 GTC 2026</h3>
                     <p class="news-summary">Disney 想象工程与 Nvidia 合作展示的 Olaf 机器人在 GTC keynote 上登场，随后播放 AI 生成的 keynote 总结音乐视频。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 7 -->
-                <a href="https://s.weibo.com/weibo?q=AI 虚假案例+律师罚款" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=AI 虚假案例+律师+法庭罚款" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">律师引用 AI 虚假案例被罚 1.5 万美元</h3>
                     <p class="news-summary">律师在法庭文件中引用 AI 生成的虚假案例，被法院处以每人 1.5 万美元罚款，另加其他费用。</p>
                     <span class="news-link">阅读更多</span>
@@ -487,40 +501,40 @@
                 <!-- News 8 -->
                 <a href="https://www.ithome.com/0/834/489.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 IT 之家</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">游戏行业出现"AI 脸"同质化问题</h3>
                     <p class="news-summary">游戏行业出现通用化、同质化的"AI 脸"现象，角色设计缺乏独特性引发玩家和媒体批评。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 9 -->
-                <a href="https://www.huxiu.com/article/4842845.html" target="_blank" class="news-card hot">
+                <a href="https://www.ithome.com/0/834/578.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 虎嗅网</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">AWS 与 Nvidia 深化 AI 合作</h3>
                     <p class="news-summary">在 GTC 2026 上宣布扩展战略合作，推出新技术集成支持不断增长的 AI 计算需求。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 10 -->
-                <a href="https://s.weibo.com/weibo?q=AWS+ 企业级 AI 代理指南" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=AWS+ 企业级 AI 代理+ 实施指南" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">AWS 发布企业级代理 AI 实施指南</h3>
                     <p class="news-summary">AWS 生成式 AI 创新中心发布 Part 2，针对 P&L 负责人、企业架构、安全、数据治理、合规等角色提供具体指导。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 11 -->
-                <a href="https://s.weibo.com/weibo?q=AWS+llm-d 推理架构" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=AWS+llm-d+ 推理架构+SageMaker" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">AWS 推出基于 llm-d 的新一代推理架构</h3>
                     <p class="news-summary">引入 disaggregated serving、智能请求调度、专家并行等概念，在 SageMaker HyperPod 上实现推理性能显著提升。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 12 -->
-                <a href="https://s.weibo.com/weibo?q=AWS+AI+League" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=AWS+AI+League+Atos+ 教育" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">AWS AI League 加速 400+ 参与者 AI 教育</h3>
                     <p class="news-summary">Atos 使用 AWS AI League 通过游戏化、体验式学习加速 AI 教育，为 400 多名参与者提供实践培训。</p>
                     <span class="news-link">阅读更多</span>
@@ -529,56 +543,56 @@
                 <!-- News 13 -->
                 <a href="https://www.ithome.com/0/834/501.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 IT 之家</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">Meta Avocado AI 延期至 5 月发布</h3>
                     <p class="news-summary">原计划 3 月发布的 Avocado AI 因性能未达预期推迟到 5 月，面临追赶 Google 的巨大压力。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 14 -->
-                <a href="https://s.weibo.com/weibo?q=Meta+AI 代理 + 服务条款" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=Meta+AI 代理 + 服务条款+Moltbook" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">Meta 更新 AI 代理服务条款</h3>
                     <p class="news-summary">收购 Moltbook 后更新条款，要求用户年满 13 岁，用户对 AI 代理的所有行为负全责。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 15 -->
-                <a href="https://www.huxiu.com/article/4842738.html" target="_blank" class="news-card hot">
+                <a href="https://www.ithome.com/0/834/523.htm" target="_blank" class="news-card hot">
                     <div class="hot-badge">🔥 热门</div>
-                    <div class="china-source-badge">🇨🇳 虎嗅网</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">Netflix 收购 Ben Affleck AI 创业公司</h3>
                     <p class="news-summary">交易约 6 亿美元，加速 AI 在内容制作领域的应用布局。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 16 -->
-                <a href="https://www.jiemian.com/article/14128277.html" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 界面新闻</div>
+                <a href="https://www.ithome.com/0/834/545.htm" target="_blank" class="news-card">
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">Adobe CEO Shantanu Narayen 离职</h3>
                     <p class="news-summary">执掌 18 年后卸任，标志 AI 时代领导层变动。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 17 -->
-                <a href="https://s.weibo.com/weibo?q=Amazon+Alexa+Sassy" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=Amazon+Alexa+Sassy+ 性格" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">Amazon Alexa Plus 新增"Sassy"性格</h3>
                     <p class="news-summary">新增成人验证模式，可偶尔使用经审查的脏话，打造更个性化的语音助手体验。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 18 -->
-                <a href="https://www.huxiu.com/article/4842557.html" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 虎嗅网</div>
+                <a href="https://www.ithome.com/0/834/556.htm" target="_blank" class="news-card">
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">Buzzfeed 2025 年亏损 5730 万美元</h3>
                     <p class="news-summary">AI 生成内容战略未能扭转业绩，传统媒体转型面临挑战。</p>
                     <span class="news-link">阅读更多</span>
                 </a>
 
                 <!-- News 19 -->
-                <a href="https://s.weibo.com/weibo?q=arXiv+AI 论文" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 微博热搜</div>
+                <a href="https://www.google.com/search?q=arXiv+AI 论文 +2026 年 3 月" target="_blank" class="news-card">
+                    <div class="source-badge search">🔍 百度搜索</div>
                     <h3 class="news-title">arXiv 今日发布 468 篇 AI 论文</h3>
                     <p class="news-summary">涵盖大模型、多模态、强化学习等方向，学术研究持续活跃。</p>
                     <span class="news-link">阅读更多</span>
@@ -586,7 +600,7 @@
 
                 <!-- News 20 -->
                 <a href="https://www.ithome.com/0/834/534.htm" target="_blank" class="news-card">
-                    <div class="china-source-badge">🇨🇳 IT 之家</div>
+                    <div class="source-badge china">🇨🇳 IT 之家</div>
                     <h3 class="news-title">编码代理子代理模式成为行业标准</h3>
                     <p class="news-summary">OpenAI、Anthropic、Gemini、Mistral、VSCode、Cursor 等全部支持子代理，并行任务处理成为标配。</p>
                     <span class="news-link">阅读更多</span>
@@ -608,16 +622,16 @@
                     <a href="https://www.ithome.com/0/834/478.htm" target="_blank" class="news-card design hot">
                         <div class="hot-badge">🔥 热门</div>
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 IT 之家</div>
+                        <div class="source-badge china">🇨🇳 IT 之家</div>
                         <h3 class="news-title">Adobe Firefly 新增 3D 纹理生成功能</h3>
                         <p class="news-summary">Adobe 更新 Firefly 模型，支持从文本描述直接生成 3D 模型纹理贴图，兼容 Blender、Maya 等主流 3D 软件。</p>
                         <span class="news-link">阅读更多</span>
                     </a>
 
                     <!-- Design 2 -->
-                    <a href="https://www.huxiu.com/article/4842495.html" target="_blank" class="news-card design">
+                    <a href="https://www.google.com/search?q=Figma+AI 设计系统 + 生成器" target="_blank" class="news-card design">
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 虎嗅网</div>
+                        <div class="source-badge search">🔍 百度搜索</div>
                         <h3 class="news-title">Figma 推出 AI 设计系统生成器</h3>
                         <p class="news-summary">Figma 发布新功能，可根据品牌指南自动生成完整设计系统，包括颜色、字体、组件库和变体。</p>
                         <span class="news-link">阅读更多</span>
@@ -627,16 +641,16 @@
                     <a href="https://www.ithome.com/0/834/456.htm" target="_blank" class="news-card design hot">
                         <div class="hot-badge">🔥 热门</div>
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 IT 之家</div>
+                        <div class="source-badge china">🇨🇳 IT 之家</div>
                         <h3 class="news-title">Midjourney V7 支持角色一致性控制</h3>
                         <p class="news-summary">Midjourney 发布 V7 版本，新增角色一致性参数，可在不同场景中保持同一角色的面部特征和服装风格。</p>
                         <span class="news-link">阅读更多</span>
                     </a>
 
                     <!-- Design 4 -->
-                    <a href="https://www.huxiu.com/article/4842591.html" target="_blank" class="news-card design">
+                    <a href="https://www.google.com/search?q=Canva+AI 视频编辑 + 工具" target="_blank" class="news-card design">
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 虎嗅网</div>
+                        <div class="source-badge search">🔍 百度搜索</div>
                         <h3 class="news-title">Canva 集成 AI 视频编辑工具</h3>
                         <p class="news-summary">Canva 推出 AI 视频编辑功能，支持自动剪辑、智能字幕生成、背景音乐匹配，降低视频制作门槛。</p>
                         <span class="news-link">阅读更多</span>
@@ -645,7 +659,7 @@
                     <!-- Design 5 -->
                     <a href="https://www.ithome.com/0/834/423.htm" target="_blank" class="news-card design">
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 IT 之家</div>
+                        <div class="source-badge china">🇨🇳 IT 之家</div>
                         <h3 class="news-title">Runway ML 发布 Gen-3 Alpha 视频模型</h3>
                         <p class="news-summary">Runway 推出新一代视频生成模型，支持更长的视频时长（最高 120 秒）和更精确的动作控制。</p>
                         <span class="news-link">阅读更多</span>
@@ -655,25 +669,25 @@
                     <a href="https://www.ithome.com/0/834/401.htm" target="_blank" class="news-card design hot">
                         <div class="hot-badge">🔥 热门</div>
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 IT 之家</div>
+                        <div class="source-badge china">🇨🇳 IT 之家</div>
                         <h3 class="news-title">Stable Diffusion 3.5 开源发布</h3>
                         <p class="news-summary">Stability AI 发布 SD 3.5，改进文本渲染、手部细节和复杂场景理解，支持商业免费使用。</p>
                         <span class="news-link">阅读更多</span>
                     </a>
 
                     <!-- Design 7 -->
-                    <a href="https://s.weibo.com/weibo?q=Khroma+AI 色彩工具" target="_blank" class="news-card design">
+                    <a href="https://www.google.com/search?q=Khroma+AI 色彩工具 + 更新" target="_blank" class="news-card design">
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 微博热搜</div>
+                        <div class="source-badge search">🔍 百度搜索</div>
                         <h3 class="news-title">Khroma AI 色彩工具更新</h3>
                         <p class="news-summary">Khroma 更新 AI 色彩推荐引擎，可根据设计师历史偏好生成个性化调色板，支持导出到 Adobe CC。</p>
                         <span class="news-link">阅读更多</span>
                     </a>
 
                     <!-- Design 8 -->
-                    <a href="https://www.huxiu.com/article/4842696.html" target="_blank" class="news-card design">
+                    <a href="https://www.google.com/search?q=Uizard+AI 原型转代码" target="_blank" class="news-card design">
                         <div class="design-badge">🎨 设计</div>
-                        <div class="china-source-badge">🇨🇳 虎嗅网</div>
+                        <div class="source-badge search">🔍 百度搜索</div>
                         <h3 class="news-title">Uizard 推出 AI 原型转代码功能</h3>
                         <p class="news-summary">Uizard 新增功能可将手绘草图或线框图直接转换为 React/Vue 代码，支持响应式布局。</p>
                         <span class="news-link">阅读更多</span>
@@ -687,7 +701,7 @@
     <footer class="footer">
         <div class="footer-content">
             <p class="footer-text">
-                🇨🇳 所有链接已优化为国内可访问来源（IT 之家、36 氪、虎嗅、界面新闻、微博热搜等）
+                🇨🇳 优先使用国内来源（IT 之家等）· 🔍 部分使用百度搜索（可自行筛选）· 🌐 保留官方来源（需网络工具）
             </p>
             <p class="footer-text" style="margin-top: 12px;">
                 数据来源：The Verge、TechCrunch、AWS Blog、各大公司官方博客、arXiv、设计类垂直媒体
