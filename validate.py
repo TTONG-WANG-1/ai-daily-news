@@ -160,6 +160,47 @@ def validate_feishu_doc():
     return is_valid
 
 
+def check_monitored_tools(html_content):
+    """Check if monitored AI tools are mentioned"""
+    print_header("🎯 重点工具监控检查")
+    
+    if not html_content:
+        print("❌ 无法检查，HTML 内容为空")
+        return
+    
+    # Tools to monitor (Chinese and English names)
+    monitored_tools = {
+        '即梦': ['即梦', 'Jimeng'],
+        'Lovart': ['Lovart', 'lovart'],
+        '豆包': ['豆包', 'Doubao'],
+        'DeepSeek': ['DeepSeek', 'deepseek', '深度求索'],
+        '哩布哩布': ['哩布哩布', 'LiblibAI', 'liblib'],
+        'Midjourney': ['Midjourney', 'midjourney', 'MJ'],
+        'Stable Diffusion': ['Stable Diffusion', 'SD', 'stability ai'],
+        'Adobe Firefly': ['Firefly', 'Adobe Firefly'],
+        'Figma AI': ['Figma', 'figma ai'],
+        'Runway': ['Runway', 'runway ml', 'Gen-3'],
+    }
+    
+    found_tools = []
+    missing_tools = []
+    
+    for tool_name, keywords in monitored_tools.items():
+        found = any(keyword.lower() in html_content.lower() for keyword in keywords)
+        if found:
+            found_tools.append(tool_name)
+        else:
+            missing_tools.append(tool_name)
+    
+    if found_tools:
+        print(f"{Colors.GREEN}✅ 发现监控工具{Colors.END}: {', '.join(found_tools)}")
+    else:
+        print(f"{Colors.YELLOW}⚠️  今日未发现重点监控工具新闻{Colors.END}")
+        print(f"   建议检查：Midjourney, Stable Diffusion, 即梦，豆包等")
+    
+    return found_tools
+
+
 def generate_report(html_content):
     """Generate a summary report"""
     print_header("📋 内容摘要")
@@ -202,6 +243,9 @@ def main():
     
     # Generate report
     generate_report(html_content)
+    
+    # Check monitored tools
+    check_monitored_tools(html_content)
     
     # Summary
     print_header("📊 验证总结")

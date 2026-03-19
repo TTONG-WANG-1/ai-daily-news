@@ -84,6 +84,30 @@ git push
 3. Adobe Max News
 4. Figma Community
 
+### 🎯 重点监控 AI 设计工具
+**每日必查更新/新闻：**
+- **即梦** (Jimeng) - 字节跳动 AI 绘画工具
+- **Lovart** - AI 艺术生成平台
+- **豆包** (Doubao) - 字节跳动 AI 助手
+- **DeepSeek** - 深度求索 AI 模型
+- **哩布哩布** (LiblibAI) - AI 模型分享平台
+- **Midjourney** - AI 图像生成
+- **Stable Diffusion** - Stability AI
+- **DALL-E 3** - OpenAI
+- **Adobe Firefly** - Adobe AI
+- **Figma AI** - 设计工具
+- **Canva AI** - 在线设计
+- **Runway ML** - 视频生成
+- **Leonardo AI** - 游戏/艺术生成
+- **Clipdrop** - Stability AI 工具集
+
+**监控内容：**
+- 版本更新 (如 Midjourney V7、SD 3.5 等)
+- 重大功能突破
+- 热点争议新闻
+- 价格/政策调整
+- 新模型发布
+
 ---
 
 ## 质量检查
