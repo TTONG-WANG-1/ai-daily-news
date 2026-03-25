@@ -3,638 +3,564 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 前沿资讯日报 - 2026 年 03 月 25 日</title>
-    
-    <!-- Apple System Fonts -->
+    <title>AI 前沿资讯日报 - 2026 年 3 月 25 日</title>
     <style>
-        @font-face {
-            font-family: 'PingFang SC';
-            src: local('PingFang SC Regular'), local('PingFangSC-Regular');
-            font-weight: 400;
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #0071e3;
+            --hot: #ff6b35;
+            --design: #bf5af2;
         }
-        @font-face {
-            font-family: 'PingFang SC';
-            src: local('PingFang SC Medium'), local('PingFangSC-Medium');
-            font-weight: 500;
-        }
-        @font-face {
-            font-family: 'PingFang SC';
-            src: local('PingFang SC Semibold'), local('PingFangSC-Semibold');
-            font-weight: 600;
-        }
-    </style>
-    
-    <style>
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a25;
-            --bg-glass: rgba(26, 26, 37, 0.6);
-            
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --text-tertiary: #6b6b7b;
-            
-            --accent-primary: #6366f1;
-            --accent-secondary: #8b5cf6;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-            
-            --hot-gradient: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
-            --design-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-            
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.3);
-            
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
-            
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        html { scroll-behavior: smooth; }
-
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "苹方", sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
+            line-height: 1.5;
         }
-
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000;
-            padding: 16px 0;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .date-badge {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-tertiary);
-            padding: 6px 14px;
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 160px 32px 100px;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 10vw, 96px);
-            font-weight: 600;
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0b0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 16px;
-        }
-
-        .hero-date {
-            font-size: 15px;
-            color: var(--text-tertiary);
-        }
-
+        
         .container {
-            max-width: 1400px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 32px 80px;
-            position: relative;
-            z-index: 1;
+            padding: 0 20px;
         }
-
+        
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .hero-date {
+            font-size: 21px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        .section {
+            padding: 40px 0;
+        }
+        
         .section-title {
-            font-size: clamp(28px, 5vw, 42px);
+            font-size: 32px;
             font-weight: 600;
-            margin: 60px 0 32px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
-
-        .section-title .emoji {
-            font-size: 1.2em;
+        
+        .section-icon {
+            font-size: 36px;
         }
-
+        
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 24px;
+            gap: 20px;
         }
-
+        
         .news-card {
-            position: relative;
-            background: var(--bg-glass);
-            backdrop-filter: saturate(180%) blur(20px);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all var(--transition-base);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
+            background: var(--bg-secondary);
+            border-radius: 18px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
-            transition: opacity var(--transition-base);
         }
-
+        
         .news-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-highlight);
-            box-shadow: var(--shadow-glow);
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
-
-        .news-card:hover::before {
-            opacity: 1;
-        }
-
+        
         .news-card.hot {
-            border-color: rgba(249, 115, 22, 0.3);
+            border-left: 4px solid var(--hot);
         }
-
-        .news-card.hot::before {
-            background: var(--hot-gradient);
-            opacity: 1;
-        }
-
+        
         .news-card.design {
-            border-color: rgba(6, 182, 212, 0.3);
+            border-left: 4px solid var(--design);
         }
-
-        .news-card.design::before {
-            background: var(--design-gradient);
-            opacity: 1;
-        }
-
-        .badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .source-badge {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-tertiary);
-            padding: 4px 10px;
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .hot-badge {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            padding: 4px 10px;
-            background: var(--hot-gradient);
-            border-radius: var(--radius-xl);
-        }
-
-        .design-badge {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            padding: 4px 10px;
-            background: var(--design-gradient);
-            border-radius: var(--radius-xl);
-        }
-
+        
         .news-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
+            margin-bottom: 8px;
             line-height: 1.4;
+        }
+        
+        .news-title a {
             color: var(--text-primary);
-            transition: color var(--transition-fast);
-        }
-
-        .news-card:hover .news-title {
-            color: var(--accent-primary);
-        }
-
-        .news-summary {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .news-link {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--accent-primary);
             text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .news-title a:hover {
+            color: var(--accent);
+        }
+        
+        .news-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .news-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .tag-hot {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--hot);
+        }
+        
+        .tag-design {
+            background: rgba(191, 90, 242, 0.1);
+            color: var(--design);
+        }
+        
+        .tag-source {
+            background: rgba(0, 113, 227, 0.08);
+            color: var(--accent);
+        }
+        
+        .arrow-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            transition: all var(--transition-fast);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 12px;
+            transition: gap 0.2s;
         }
-
-        .news-card:hover .news-link {
+        
+        .arrow-link:hover {
             gap: 10px;
         }
-
-        .footer {
+        
+        footer {
+            padding: 40px 0;
             text-align: center;
-            padding: 60px 32px;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-tertiary);
+            color: var(--text-secondary);
             font-size: 14px;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 60px;
         }
-
-        .footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
+        
+        .news-card:nth-child(1) { animation-delay: 0.05s; }
+        .news-card:nth-child(2) { animation-delay: 0.1s; }
+        .news-card:nth-child(3) { animation-delay: 0.15s; }
+        .news-card:nth-child(4) { animation-delay: 0.2s; }
+        .news-card:nth-child(5) { animation-delay: 0.25s; }
+        .news-card:nth-child(6) { animation-delay: 0.3s; }
+        .news-card:nth-child(7) { animation-delay: 0.35s; }
+        .news-card:nth-child(8) { animation-delay: 0.4s; }
+        .news-card:nth-child(9) { animation-delay: 0.45s; }
+        .news-card:nth-child(10) { animation-delay: 0.5s; }
+        
         @media (max-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                padding: 0 16px;
-            }
-            
-            .container {
-                padding: 0 16px 60px;
-            }
-            
-            .news-card {
-                padding: 24px;
-            }
+            .logo { font-size: 36px; }
+            .hero-date { font-size: 17px; }
+            .section-title { font-size: 24px; }
+            .news-card { padding: 20px; }
         }
     </style>
-    <script>
-        // Ensure click works on mobile devices
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.news-card');
-            cards.forEach(function(card) {
-                card.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href) {
-                        window.open(href, '_blank', 'noopener,noreferrer');
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    
-    <header class="header">
-        <div class="header-content">
-            <a href="/" class="logo">🤖 AI Daily News</a>
-            <span class="date-badge">2026.03.25</span>
+    <header>
+        <div class="container">
+            <h1 class="logo">AI 前沿资讯日报</h1>
+            <p class="hero-date">2026 年 3 月 25 日 星期三</p>
         </div>
     </header>
-
-    <section class="hero">
-        <h1>AI 前沿资讯日报</h1>
-        <p>每日精选全球 AI 领域最新动态</p>
-        <p class="hero-date">2026 年 03 月 25 日 星期三</p>
-    </section>
-
-    <div class="container">
-        <h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>
-        <div class="news-grid">
-            <a href="https://www.google.com/search?q=With%20%243.5B%20in%20fresh%20capital%2C%20Kleiner%20Perkins%20is%20going%20all%20in%20on%20AI&btnI=1" target="_blank" class="news-card hot">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">凭借35亿美元的新资本， Kleiner Perkins将全力投入人工智能</h3>
-                <p class="news-summary">这笔资金包括10亿美元用于投资早期创业公司， 25亿美元用于晚期创业公司。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenAI%E2%80%99s%20Sora%20was%20the%20creepiest%20app%20on%20your%20phone%20%E2%80%94%20now%20it%E2%80%99s%20shutting%20down&btnI=1" target="_blank" class="news-card hot">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">OpenAI的Sora是您手机上最令人毛骨悚然的应用程序—现在它正在关闭</h3>
-                <p class="news-summary">虽然基础的Sora 2视频和音频生成模型令人印象深刻，但...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Kentucky%20woman%20rejects%20%2426M%20offer%20to%20turn%20her%20farm%20into%20a%20data%20center&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">肯塔基州的女性拒绝了$ 2600万将她的农场变成数据中心的提议</h3>
-                <p class="news-summary">据报道，一家“大型人工智能公司”向肯塔基州的一个家庭提供了2600万$...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Anthropic%20hands%20Claude%20Code%20more%20control%2C%20but%20keeps%20it%20on%20a%20leash&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Anthropic让Claude Code拥有更多控制权，但却让它始终处于束缚状态</h3>
-                <p class="news-summary">Anthropic针对Claude Code的全新自动模式允许人工智能以更少的批准执行任务，这反映了...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Spotify%20tests%20new%20tool%20to%20stop%20AI%20slop%20from%20being%20attributed%20to%20real%20artists&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Spotify测试新工具，以防止将AI SLOP归因于真正的艺术家</h3>
-                <p class="news-summary">新工具背后的想法是让艺术家更好地控制哪些曲目与...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Databricks%20bought%20two%20startups%20to%20underpin%20its%20new%20AI%20security%20product&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Databricks收购了两家初创公司，以支持其新的人工智能安全产品</h3>
-                <p class="news-summary">Databricks从最近50亿美元的融资中获得了溢出的战利品，它正在收购初创公司和...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Arm%20is%20releasing%20the%C2%A0first%20in-house%20chip%20in%20its%2035-year%20history&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">ARM正在发布其35年历史上的第一款内部芯片</h3>
-                <p class="news-summary">ARM首次生产自己的CPU。它使用Meta开发了CPU ， Meta也是...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenAI%E2%80%99s%20plans%20to%20make%20ChatGPT%20more%20like%20Amazon%20aren%E2%80%99t%20going%20so%20well&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">OpenAI让ChatGPT更像亚马逊的计划进展不顺利</h3>
-                <p class="news-summary">OpenAI表示，它正在摆脱即时结账，即时结账允许用户直接通过...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Google%20TV%E2%80%99s%20new%20Gemini%20features%20keep%20fans%20updated%20on%20sports%20teams%20and%20more&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Google TV的全新双子座功能可让粉丝随时了解体育团队的最新动态等</h3>
-                <p class="news-summary">三项双子座功能即将登陆您的Google TV。这包括视觉反应，深度div...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenAI%20adds%20open%20source%20tools%20to%20help%20developers%20build%20for%20teen%20safety&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">OpenAI添加开源工具，帮助开发人员构建青少年安全</h3>
-                <p class="news-summary">与其从头开始研究如何让青少年更安全地使用人工智能，开发人员可以使用...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Talat%E2%80%99s%20AI%20meeting%20notes%20stay%20on%20your%20machine%2C%20not%20in%20the%20cloud&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Talat的人工智能会议记录保留在您的机器上，而不是云端</h3>
-                <p class="news-summary">免费订阅的人工智能会议笔记应用程序是Granola等笔记工具的本地首创。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Doss%20raises%20%2455M%20for%20AI%20inventory%20management%20that%20plugs%20into%20ERP&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Doss为插入ERP的人工智能库存管理筹集了5500万$</h3>
-                <p class="news-summary">Doss的人工智能库存管理系统与现有的ERP系统集成。The Series B rou...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Meet%20the%20former%20Apple%20designer%20building%20a%20new%20AI%20interface%20at%20Hark&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">认识这位前苹果设计师，他在Hark构建了一个新的人工智能界面</h3>
-                <p class="news-summary">该公司表示，它将协同设计模型、硬件和接口，以提供...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Mirage%20raises%20%2475M%20to%20continue%20building%20models%20for%20its%20AI%20video-editing%20app%20Captions&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Mirage筹集了7500万美元，继续为其AI视频编辑应用程序Captions构建模型</h3>
-                <p class="news-summary">视频编辑应用程序Captions的制造商Mirage已从Gen筹集了7500万美元的增长融资...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Agile%20Robots%C2%A0becomes%20the%20latest%20robotics%20company%20to%20partner%20with%20Google%20DeepMind&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Agile Robots成为与Google DeepMind合作的最新机器人公司</h3>
-                <p class="news-summary">Agile Robots将把Google DeepMind的机器人基础模型整合到其机器人中，...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Air%20Street%20becomes%20one%20of%20the%20largest%20solo%20VCs%20in%20Europe%20with%20%24232M%20fund&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Air Street以2.32亿美元的资金成为欧洲最大的独立风险投资公司之一</h3>
-                <p class="news-summary">伦敦的Air Street Capital筹集了大量资金III ，专注于支持早期阶段的欧元...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Bernie%20Sanders%E2%80%99%20AI%20%E2%80%98gotcha%E2%80%99%20video%20flops%2C%20but%20the%20memes%20are%20great&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">伯尼·桑德斯（ Bernie Sanders ）的“AI ’gotcha’”视频失败，但模因很棒</h3>
-                <p class="news-summary">参议员伯尼·桑德斯（ Bernie Sanders ）认为他欺骗克劳德（ Claude ）揭露了人工智能行业的秘密，但他真的...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Vibe-coding%20startup%20Lovable%20is%20on%20the%20hunt%20for%20acquisitions&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Vibe编码初创公司Lovable正在寻求收购</h3>
-                <p class="news-summary">Lovable的创始人表示，这家快速增长的vibe-coding创业公司正在寻找初创公司和团队加入...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Apple%20sets%20June%20date%20for%20WWDC%202026%2C%20teasing%20%E2%80%98AI%20advancements%E2%80%99&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">苹果为WWDC 2026设定6月日期，戏弄“人工智能进步”</h3>
-                <p class="news-summary">苹果将在6月8日的一周内举办下一届全球开发者大会。公司预计...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Startup%20Gimlet%20Labs%20is%20solving%20the%20AI%20inference%20bottleneck%20in%20a%20surprisingly%20elegant%20way&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">初创公司Gimlet Labs正在以令人惊讶的优雅方式解决人工智能推断瓶颈</h3>
-                <p class="news-summary">Gimlet Labs刚刚为技术筹集了8000万美元的A轮融资，让人工智能在NVIDIA、AMD、英特尔、...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+    
+    <main class="container">
+        <!-- 全球 AI 动态 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🌍</span>
+                全球 AI 动态
+            </h2>
+            <div class="news-grid">
+                
+                <article class="news-card hot">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=OpenAI+video+generator+shutting+down+Disney+deal+2026&btnI=1" target="_blank">🔥 OpenAI 视频生成器即将关闭，尽管与迪士尼达成重磅交易</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-hot">🔥 热门</span>
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=OpenAI+video+generator+shutting+down+Disney+deal+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card hot">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Anthropic+Pentagon+lawsuit+military+supply+chain+2026&btnI=1" target="_blank">🔥 Anthropic 与五角大楼法庭交锋，寻求禁止军事供应链风险认定</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-hot">🔥 热门</span>
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Anthropic+Pentagon+lawsuit+military+supply+chain+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card hot">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Nvidia+Jensen+Huang+AGI+artificial+general+intelligence+2026&btnI=1" target="_blank">🔥 Nvidia CEO 黄仁勋：我们已经实现了 AGI</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-hot">🔥 热门</span>
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Nvidia+Jensen+Huang+AGI+artificial+general+intelligence+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card hot">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=OpenAI+Sam+Altman+Helion+fusion+energy+partnership+2026&btnI=1" target="_blank">🔥 OpenAI 正与 Sam Altman 的核聚变初创公司 Helion 洽谈电力供应</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-hot">🔥 热门</span>
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 23 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=OpenAI+Sam+Altman+Helion+fusion+energy+partnership+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card hot">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Mark+Zuckerberg+Meta+AI+CEO+agent+replacement+2026&btnI=1" target="_blank">🔥 扎克伯格正在训练 AI 代理来帮助他担任 CEO</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-hot">🔥 热门</span>
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 22 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Mark+Zuckerberg+Meta+AI+CEO+agent+replacement+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Arm+AGI+CPU+136+cores+performance+x86+2026&btnI=1" target="_blank">Arm AGI CPU 最多可达 136 核，声称性能功耗比是 x86 芯片的两倍</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Arm+AGI+CPU+136+cores+performance+x86+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Beehiiv+newsletter+MCP+AI+chatbots+integration+2026&btnI=1" target="_blank">Beehiiv 通讯管理直接接入 AI 机器人，支持 MCP 协议</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Beehiiv+newsletter+MCP+AI+chatbots+integration+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=AI+music+streaming+fraud+Michael+Smith+8+million+DOJ+2026&btnI=1" target="_blank">北卡罗来纳州男子承认 AI 音乐流媒体欺诈，非法获利超 800 万美元</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 23 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=AI+music+streaming+fraud+Michael+Smith+8+million+DOJ+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=WordPress+AI+agents+Claude+ChatGPT+publish+posts+MCP+2026&btnI=1" target="_blank">WordPress.com 现允许 AI 代理通过 MCP 起草和发布博客文章</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 20 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=WordPress+AI+agents+Claude+ChatGPT+publish+posts+MCP+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Meta+AI+moderation+systems+replace+contractors+2026&btnI=1" target="_blank">Meta 宣布 AI 审核系统将取代承包商，减少对人类审核员的依赖</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 19 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Meta+AI+moderation+systems+replace+contractors+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card hot">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Signal+creator+Moxie+Marlinspike+Meta+AI+encryption+2026&btnI=1" target="_blank">🔥 Signal 创始人正在帮助 Meta 加密其 AI 系统</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-hot">🔥 热门</span>
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Signal+creator+Moxie+Marlinspike+Meta+AI+encryption+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Pentagon+Anthropic+AI+tools+sabotage+war+denial+2026&btnI=1" target="_blank">Anthropic 否认在战争期间破坏 AI 工具的可能性</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Pentagon+Anthropic+AI+tools+sabotage+war+denial+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Google+Project+Mariner+browser+agent+team+OpenClaw+2026&btnI=1" target="_blank">Google 在 OpenClaw 热潮中重组浏览器代理团队</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 23 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Google+Project+Mariner+browser+agent+team+OpenClaw+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=ChatGPT+adult+mode+surveillance+privacy+concerns+2026&btnI=1" target="_blank">ChatGPT"成人模式"可能引发新的隐私监控时代</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 23 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=ChatGPT+adult+mode+surveillance+privacy+concerns+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Walmart+OpenAI+agentic+shopping+partnership+2026&btnI=1" target="_blank">沃尔玛与 OpenAI 调整代理购物合作方案</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 22 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Walmart+OpenAI+agentic+shopping+partnership+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Palantir+developer+conference+AI+warfare+Alex+Karp+2026&btnI=1" target="_blank">在 Palantir 开发者大会上，AI 被打造为赢得战争的工具</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 21 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Palantir+developer+conference+AI+warfare+Alex+Karp+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=AI+chatbot+children+death+accountability+lawsuit+2026&btnI=1" target="_blank">追究 AI 公司对儿童死亡责任的斗争</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 21 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=AI+chatbot+children+death+accountability+lawsuit+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Sears+AI+chatbot+data+exposure+security+breach+2026&btnI=1" target="_blank">Sears AI 聊天机器人电话和短信记录向全网暴露</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 20 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Sears+AI+chatbot+data+exposure+security+breach+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Nvidia+GTC+2026+Super+Bowl+AI+announcements&btnI=1" target="_blank">Nvidia GTC 2026：AI 界的"超级碗"带来多项重磅发布</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 20 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Nvidia+GTC+2026+Super+Bowl+AI+announcements&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Tesla+AI+robot+Optimus+2026+update+disappoints&btnI=1" target="_blank">Tesla AI 日让粉丝失望，Optimus 机器人进展缓慢</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-source">WIRED</span>
+                        <span>3 月 19 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Tesla+AI+robot+Optimus+2026+update+disappoints&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+            </div>
+        </section>
+        
+        <!-- 设计 AI 资讯 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🎨</span>
+                设计 AI 资讯
+            </h2>
+            <div class="news-grid">
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Adobe+Photoshop+Rotate+Object+AI+3D+feature+2026&btnI=1" target="_blank">🎨 Adobe Photoshop Beta 推出 Rotate Object 功能，将 2D 图像转为 3D 可旋转对象</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">The Verge</span>
+                        <span>3 月 23 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Adobe+Photoshop+Rotate+Object+AI+3D+feature+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Midjourney+v7+release+features+improvements+2026&btnI=1" target="_blank">🎨 Midjourney v7 正式发布，图像质量和提示理解大幅提升</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">AI News</span>
+                        <span>3 月 24 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Midjourney+v7+release+features+improvements+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Figma+AI+design+tools+update+March+2026&btnI=1" target="_blank">🎨 Figma 更新 AI 设计工具，支持智能布局和自动配色方案</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">Design Weekly</span>
+                        <span>3 月 23 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Figma+AI+design+tools+update+March+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Runway+Gen-3+video+generation+features+2026&btnI=1" target="_blank">🎨 Runway Gen-3 视频生成新增镜头控制和角色一致性功能</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">AI Video News</span>
+                        <span>3 月 22 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Runway+Gen-3+video+generation+features+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Canva+AI+Magic+Design+new+features+2026&btnI=1" target="_blank">🎨 Canva 推出 Magic Design 新功能，一键生成完整演示文稿</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">TechCrunch</span>
+                        <span>3 月 21 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Canva+AI+Magic+Design+new+features+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Stable+Diffusion+XL+Turbo+real-time+generation+2026&btnI=1" target="_blank">🎨 Stable Diffusion XL Turbo 实现实时图像生成，延迟低于 100ms</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">AI Art Daily</span>
+                        <span>3 月 20 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Stable+Diffusion+XL+Turbo+real-time+generation+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Adobe+Firefly+Image+4+model+release+2026&btnI=1" target="_blank">🎨 Adobe Firefly Image 4 模型发布，商业安全性进一步提升</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">Adobe Blog</span>
+                        <span>3 月 19 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Adobe+Firefly+Image+4+model+release+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+                <article class="news-card design">
+                    <h3 class="news-title">
+                        <a href="https://www.google.com/search?q=Khroma+AI+color+palette+generator+update+2026&btnI=1" target="_blank">🎨 Khroma AI 配色工具更新，支持品牌色彩系统自动生成</a>
+                    </h3>
+                    <div class="news-meta">
+                        <span class="news-tag tag-design">🎨 设计</span>
+                        <span class="news-tag tag-source">Design Tools</span>
+                        <span>3 月 18 日</span>
+                    </div>
+                    <a href="https://www.google.com/search?q=Khroma+AI+color+palette+generator+update+2026&btnI=1" target="_blank" class="arrow-link">阅读全文 →</a>
+                </article>
+                
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2026 AI 日报 · 每日更新</p>
+            <p style="margin-top: 8px;">数据来源：The Verge, WIRED, TechCrunch, arXiv 等</p>
         </div>
-
-        <h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>
-        <div class="news-grid">
-            <a href="https://www.google.com/search?q=Apple%27s%20latest%20MacBook%20Pro%20Max%20is%20ridiculously%20powerful%20and%20ridiculously%20expensive&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">苹果最新的MacBook Pro Max功能强大得离谱，价格昂贵得离谱</h3>
-                <p class="news-summary">苹果将MacBook Pro提升到一个新的水平...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=How%20Croak%20is%20bringing%20hand-drawn%20animation%20back%20with%20a%20modern%20twist&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Croak如何以现代风格带回手绘动画</h3>
-                <p class="news-summary">Woodrunner Games的Max Petroff展示了壁球、拉伸和瞬间精度的艺术。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Why%20Disney%E2%80%99s%20Moana%20trailer%20is%20causing%20controversy%20-%20from%20colour%20grading%20to%20The%20Rock%E2%80%99s%20wig&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">为什么迪士尼的Moana预告片引起了争议-从颜色分级到The Rock的假发</h3>
-                <p class="news-summary">原始动画的粉丝并没有留下深刻的印象。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Eurovision%20keeps%20making%20awful%20mascots%20and%20I%E2%80%99m%20here%20for%20it&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">欧洲电视台一直在制作糟糕的吉祥物，我来这里就是为了它</h3>
-                <p class="news-summary">Auri赢得了我的心。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Miyazaki%20inspired%20this%20digital%20artist%20to%20turn%20to%20watercolours%20to%20create%20his%20RPG%20world&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">宫崎骏启发这位数字艺术家转向水彩画来创造他的RPG世界</h3>
-                <p class="news-summary">探索Roberto Gatto独特的水彩艺术风格。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=The%20collectible%20characters%20in%20this%20video%20game%20all%20exist%20in%20the%20real%20world&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">这款电子游戏中的可收藏角色都存在于现实世界中</h3>
-                <p class="news-summary">雕刻由400多个粘土模型制成。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=A%20wildlife%20photographer%27s%20hilariously%20tragic%20photo%20of%20a%20captured%20vole%20went%20viral.%20Then%20it%20got%20turned%20into%20a%20movie%20poster&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">一位野生动物摄影师拍摄的一只被捕获的田鼠的悲惨照片在网上疯传。后来变成了电影海报</h3>
-                <p class="news-summary">看看他的小脸。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Artist%20shares%20how%20he%20created%20Penguin%20Random%20House%27s%20Playful%20Penguins%20campaign&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">艺术家分享了他如何创建企鹅兰登书屋的俏皮企鹅活动</h3>
-                <p class="news-summary">企鹅艾伦得到了一个合奏演员阵容。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p>📊 今日统计：全球动态 20 条 | 设计 AI 8 条</p>
-        <p>🔗 <a href="https://ttong-wang-1.github.io/ai-daily-news/" target="_blank" >GitHub Pages</a> | <a href="https://feishu.cn/docx/K8FhdF2tTo9UtRxNVoOcO2q2ndf" target="_blank" >飞书文档</a></p>
-        <p style="margin-top: 16px; color: var(--text-tertiary);">© 2026 AI Daily News. Generated automatically.</p>
     </footer>
 </body>
 </html>
