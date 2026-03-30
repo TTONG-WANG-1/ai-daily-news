@@ -11,6 +11,7 @@
 
 ### 2. 内容验证 ✅
 - [ ] 全球动态板块：20 条新闻
+- [ ] 🦞 OpenClaw 龙虾资讯：5 条新闻
 - [ ] 设计 AI 板块：8 条新闻
 - [ ] 每条新闻都有标题 + 摘要 + 链接
 - [ ] **无模板内容/旧闻混入**
@@ -78,11 +79,35 @@ git push
 3. TechCrunch AI
 4. arXiv cs.AI (论文)
 
+### 🦞 OpenClaw 龙虾资讯 (新增)
+1. GitHub Releases (优先) - 版本更新
+2. GitHub Commits - 最新提交
+3. GitHub Issues - 热门议题
+4. Discord 社区 - 热点讨论
+5. 官方文档更新
+
 ### 设计 AI (副板块)
 1. Creative Bloq AI
 2. WIRED Design
 3. Adobe Max News
 4. Figma Community
+
+### 🦞 OpenClaw 重点监控
+**每日必查更新：**
+- **GitHub Releases** - 新版本发布
+- **GitHub Commits** - 代码更新
+- **技能生态系统** - 新技能发布
+- **文档更新** - docs.openclaw.ai
+- **Discord 社区** - 用户反馈和讨论
+- **ClawHub** - 插件/技能市场
+
+**监控内容：**
+- 版本更新 (如 v2026.3.x)
+- 新平台支持 (WhatsApp/Telegram/Discord 等)
+- 新技能发布
+- 性能优化
+- Bug 修复
+- 社区热点
 
 ### 🎯 重点监控 AI 设计工具
 **每日必查更新/新闻：**

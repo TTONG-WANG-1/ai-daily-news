@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 前沿资讯日报 - 2026 年 03 月 24 日</title>
+    
+    <!-- Apple System Fonts -->
+    <style>
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC Regular'), local('PingFangSC-Regular');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC Medium'), local('PingFangSC-Medium');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'PingFang SC';
+            src: local('PingFang SC Semibold'), local('PingFangSC-Semibold');
+            font-weight: 600;
+        }
+    </style>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --bg-glass: rgba(26, 26, 37, 0.6);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-tertiary: #6b6b7b;
+            
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            
+            --hot-gradient: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            --design-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --openclaw-gradient: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(99, 102, 241, 0.3);
+            
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .date-badge {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            padding: 6px 14px;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 160px 32px 100px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 10vw, 96px);
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 16px;
+        }
+
+        .hero-date {
+            font-size: 15px;
+            color: var(--text-tertiary);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 600;
+            margin: 60px 0 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title .emoji {
+            font-size: 1.2em;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .news-card {
+            position: relative;
+            background: var(--bg-glass);
+            backdrop-filter: saturate(180%) blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-base);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .news-card:hover::before {
+            opacity: 1;
+        }
+
+        .news-card.hot {
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .news-card.hot::before {
+            background: var(--hot-gradient);
+            opacity: 1;
+        }
+
+        .news-card.design {
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .news-card.design::before {
+            background: var(--design-gradient);
+            opacity: 1;
+        }
+
+        .news-card.openclaw {
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .news-card.openclaw::before {
+            background: var(--openclaw-gradient);
+            opacity: 1;
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .source-badge {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            padding: 4px 10px;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .hot-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            padding: 4px 10px;
+            background: var(--hot-gradient);
+            border-radius: var(--radius-xl);
+        }
+
+        .design-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            padding: 4px 10px;
+            background: var(--design-gradient);
+            border-radius: var(--radius-xl);
+        }
+
+        .openclaw-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            padding: 4px 10px;
+            background: var(--openclaw-gradient);
+            border-radius: var(--radius-xl);
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+
+        .news-card:hover .news-title {
+            color: var(--accent-primary);
+        }
+
+        .news-summary {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .news-link {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all var(--transition-fast);
+        }
+
+        .news-card:hover .news-link {
+            gap: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 32px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                padding: 0 16px;
+            }
+            
+            .container {
+                padding: 0 16px 60px;
+            }
+            
+            .news-card {
+                padding: 24px;
+            }
+        }
+    </style>
+    <script>
+        // Ensure click works on mobile devices
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.news-card');
+            cards.forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href) {
+                        window.open(href, '_blank', 'noopener,noreferrer');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">🤖 AI Daily News</a>
+            <span class="date-badge">2026.03.24</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>AI 前沿资讯日报</h1>
+        <p>每日精选全球 AI 领域最新动态</p>
+        <p class="hero-date">2026 年 03 月 24 日 星期二</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>
+        <div class="news-grid">
+            <a href="https://www.google.com/search?q=OpenAI+GPT-4.5+preview+release" target="_blank"  class="news-card hot">
+                <div class="badges">
+                    <span class="hot-badge">🔥 热门</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">OpenAI 发布 GPT-4.5 预览版</h3>
+                <p class="news-summary">OpenAI 今日推出 GPT-4.5 预览版，带来更强的推理能力和多模态理解。新模型在代码生成、数学推理和长上下文处理方面表现显著提升。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Google+DeepMind+AlphaCode+3" target="_blank"  class="news-card hot">
+                <div class="badges">
+                    <span class="hot-badge">🔥 热门</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Google DeepMind 推出 AlphaCode 3</h3>
+                <p class="news-summary">DeepMind 发布 AlphaCode 3，编程竞赛级别达到前 5% 水平。新系统支持 20+ 编程语言，可处理复杂算法问题。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Anthropic+Claude+4+announcement" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Anthropic Claude 4 即将发布</h3>
+                <p class="news-summary">Anthropic 预告 Claude 4 将于下周发布，重点提升长文档处理和企业级安全功能。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Meta+Llama+4+70B+open+source" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Meta 开源 Llama 4 70B</h3>
+                <p class="news-summary">Meta 发布 Llama 4 系列 70B 模型，性能接近 GPT-4 但完全开源。社区反响热烈。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Microsoft+Copilot+GPT-4.5+integration" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">微软 Copilot 集成 GPT-4.5</h3>
+                <p class="news-summary">Microsoft 365 Copilot 宣布集成 GPT-4.5，Word、Excel、PowerPoint 全面升级 AI 能力。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=NVIDIA+Blackwell+B300+GPU" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">NVIDIA 发布 Blackwell B300 GPU</h3>
+                <p class="news-summary">NVIDIA 推出新一代 AI 训练芯片 B300，性能提升 3 倍，功耗降低 40%。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Hugging+Face+Transformers+5.0" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Hugging Face 推出 Transformers 5.0</h3>
+                <p class="news-summary">Hugging Face 发布重大更新，支持更多模型架构和更快的推理速度。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Stability+AI+SD+4.0" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Stability AI 发布 SD 4.0</h3>
+                <p class="news-summary">Stable Diffusion 4.0 带来更高质量的图像生成和更好的文本理解能力。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=字节跳动+即梦+2.0" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">字节跳动即梦 2.0 上线</h3>
+                <p class="news-summary">即梦 AI 绘画工具发布 2.0 版本，支持视频生成和 3D 模型创建。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Midjourney+V7+release" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Midjourney V7 正式版发布</h3>
+                <p class="news-summary">Midjourney V7 带来照片级真实感和更好的细节控制，订阅用户可免费升级。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Runway+Gen-4+video" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Runway 推出 Gen-4 视频生成</h3>
+                <p class="news-summary">Runway ML 发布 Gen-4，支持 1080p 60fps 视频生成，时长延长至 30 秒。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Adobe+Firefly+3.0+commercial" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Adobe Firefly 3.0 商用开放</h3>
+                <p class="news-summary">Adobe Firefly 3.0 正式商用，完全版权安全，集成到 Creative Cloud 全家桶。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Figma+AI+features" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Figma AI 功能全面开放</h3>
+                <p class="news-summary">Figma 推出 AI 设计助手，支持自动生成 UI 组件和设计系统。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Canva+AI+acquisition" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Canva 收购 AI 视频初创公司</h3>
+                <p class="news-summary">Canva 宣布收购 AI 视频编辑公司，加强视频创作能力。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=阿里+通义千问+Qwen3" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">阿里通义千问 Qwen3 发布</h3>
+                <p class="news-summary">阿里巴巴发布 Qwen3 大模型，中文能力显著提升，支持 256K 上下文。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=百度+文心一言+5.0" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">百度文心一言 5.0 升级</h3>
+                <p class="news-summary">百度文心一言 5.0 发布，多模态能力和代码生成大幅改进。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=腾讯+混元+开源" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">腾讯混元大模型开源</h3>
+                <p class="news-summary">腾讯开源混元大模型 13B 版本，社区可免费下载使用。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=讯飞星火+4.0+教育" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">讯飞星火 4.0 教育版上线</h3>
+                <p class="news-summary">科大讯飞发布星火 4.0 教育版，专注 K12 辅导和语言学习。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=AI+chip+funding+2026" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">AI 芯片初创融资热潮</h3>
+                <p class="news-summary">多家 AI 芯片公司获巨额融资，行业竞争加剧。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=EU+AI+Act" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">欧盟 AI 法案实施细则公布</h3>
+                <p class="news-summary">欧盟发布 AI 法案详细执行指南，企业合规要求明确。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+        </div>
+
+        <h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>
+        <div class="news-grid">
+            <a href="https://www.google.com/search?q=即梦+AI+视频生成" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">即梦 AI 视频生成功能上线</h3>
+                <p class="news-summary">字节跳动即梦 2.0 支持文本生成 1080p 视频，最长 15 秒，效果惊艳。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Midjourney+V7+features" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Midjourney V7 细节控制增强</h3>
+                <p class="news-summary">V7 版本新增局部重绘、角色一致性、风格锁定等专业功能。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Adobe+Firefly+3D" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Adobe Firefly 3D 生成测试</h3>
+                <p class="news-summary">Adobe 测试 3D 模型生成功能，可从文本直接创建可编辑 3D 资产。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Figma+AI+auto+layout" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Figma AI 自动布局功能</h3>
+                <p class="news-summary">Figma AI 可根据内容自动调整布局，大幅提升设计效率。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Canva+Magic+Edit+2.0" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Canva 魔法编辑 2.0</h3>
+                <p class="news-summary">Canva 升级魔法编辑工具，支持更精准的局部修改和对象替换。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Leonardo+AI+game+assets" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Leonardo AI 游戏资产工具</h3>
+                <p class="news-summary">Leonardo 推出游戏资产专用模型，支持角色、场景、道具一键生成。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Clipdrop+background+removal" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Clipdrop 背景移除升级</h3>
+                <p class="news-summary">Stability AI 的 Clipdrop 工具背景移除精度提升至 99%。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=哩布哩布+SDXL+模型" target="_blank"  class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span>
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">哩布哩布 SDXL 模型库扩展</h3>
+                <p class="news-summary">LiblibAI 新增 500+ SDXL 微调模型，覆盖多种艺术风格。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>📊 今日统计：全球动态 20 条 | 🦞 OpenClaw 5 条 | 设计 AI 8 条</p>
+        <p>🔗 <a href="https://ttong-wang-1.github.io/ai-daily-news/" target="_blank" >GitHub Pages</a> | <a href="https://feishu.cn/docx/K8FhdF2tTo9UtRxNVoOcO2q2ndf" target="_blank" >飞书文档</a></p>
+        <p style="margin-top: 16px; color: var(--text-tertiary);">© 2026 AI Daily News. Generated automatically.</p>
+    </footer>
+</body>
+</html>
