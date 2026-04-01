@@ -133,14 +133,16 @@ def fetch_openclaw_news(max_items=5):
     
     return items[:max_items]
 
-def is_recent(published_str, days=2):
+def is_recent(published_str, days=1):
+    """Check if news is recent (within specified days, default=1 for today/yesterday only)"""
     if not published_str:
-        return True
+        return True  # No date = assume recent
     try:
-        for fmt in ['%a, %d %b %Y %H:%M:%S', '%Y-%m-%d']:
+        for fmt in ['%a, %d %b %Y %H:%M:%S', '%Y-%m-%dT%H:%M:%S', '%Y-%m-%d']:
             try:
-                pub_date = datetime.strptime(published_str.split('+')[0].strip(), fmt)
-                return (datetime.now() - pub_date).days <= days
+                pub_date = datetime.strptime(published_str.split('+')[0].split('Z')[0].strip(), fmt)
+                age_days = (datetime.now() - pub_date).days
+                return age_days <= days
             except:
                 continue
         return True
@@ -234,23 +236,27 @@ def main():
     all_news = []
     for name, url in RSS_FEEDS.items():
         print(f"  - {name}...")
-        items, error = fetch_feed(url, max_items=20)
+        items, error = fetch_feed(url, max_items=30)
         if error:
             print(f"    ⚠️  {error}")
         else:
-            recent = [i for i in items if is_recent(i['published'], days=2)]
-            print(f"    ✅ {len(recent)} recent")
+            # 只抓取今日和昨日新闻（days=1）
+            recent = [i for i in items if is_recent(i['published'], days=1)]
+            old_count = len(items) - len(recent)
+            print(f"    ✅ {len(recent)} recent, ⚠️ {old_count} old (filtered)")
             all_news.extend(recent)
     
     design_news = []
     for name, url in DESIGN_FEEDS.items():
         print(f"  - {name}...")
-        items, error = fetch_feed(url, max_items=10)
+        items, error = fetch_feed(url, max_items=15)
         if error:
             print(f"    ⚠️  {error}")
         else:
-            recent = [i for i in items if is_recent(i['published'], days=2)]
-            print(f"    ✅ {len(recent)} recent")
+            # 只抓取今日和昨日新闻（days=1）
+            recent = [i for i in items if is_recent(i['published'], days=1)]
+            old_count = len(items) - len(recent)
+            print(f"    ✅ {len(recent)} recent, ⚠️ {old_count} old (filtered)")
             design_news.extend(recent)
     
     # Fetch OpenClaw news
@@ -262,13 +268,15 @@ def main():
     print("  - product announcements...")
     product_news = []
     for name, url in PRODUCT_FEEDS.items():
-        items, error = fetch_feed(url, max_items=5)
+        items, error = fetch_feed(url, max_items=10)
         if error:
             print(f"    ⚠️  {name}: {error}")
         else:
+            # 产品公告放宽到 3 天内（产品更新频率较低）
             recent = [i for i in items if is_recent(i['published'], days=3)]
+            old_count = len(items) - len(recent)
             if recent:
-                print(f"    ✅ {name}: {len(recent)} items")
+                print(f"    ✅ {name}: {len(recent)} recent, ⚠️ {old_count} old (filtered)")
                 # 标记为产品更新
                 for item in recent:
                     item['is_product'] = True
@@ -298,6 +306,11 @@ def main():
             unique_product.append(item)
     
     print(f"\n📊 Unique: Global={len(unique_news)}, Design={len(unique_design)}, Product={len(unique_product)}")
+    
+    # 显示日期验证信息
+    print("\n📅 Date verification:")
+    for item in unique_news[:5]:
+        print(f"  - {item['published'][:10] if item['published'] else 'No date'}: {item['title'][:50]}")
     
     # Translate in batch
     print("\n🌏 Translating to Chinese...")
