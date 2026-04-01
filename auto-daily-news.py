@@ -22,10 +22,25 @@ TEMPLATE_FILE = AI_NEWS_DIR / 'template.html'
 
 RSS_FEEDS = {
     'techcrunch': 'https://techcrunch.com/category/artificial-intelligence/feed/',
+    'wired_ai': 'https://www.wired.com/feed/tag-ai/rss',
+    'venturebeat_ai': 'https://venturebeat.com/category/ai/feed/',
+    # 中文资讯源
+    '36kr_ai': 'https://36kr.com/rss/article/人工智能',
+    'huggingface': 'https://huggingface.co/blog/feed.xml',
 }
 
 DESIGN_FEEDS = {
     'creativebloq': 'https://www.creativebloq.com/ai/rss',
+    'wired_design': 'https://www.wired.com/feed/tag-design/rss',
+}
+
+# 产品公告和活动资讯源
+PRODUCT_FEEDS = {
+    'feishu': 'https://www.feishu.cn/rss/announcements',  # 飞书公告
+    'xiaomi': 'https://www.mi.com/rss/news',  # 小米动态
+    'openai': 'https://openai.com/news/rss',  # OpenAI 官方
+    'anthropic': 'https://www.anthropic.com/rss',  # Anthropic 官方
+    'midjourney': 'https://midjourney.com/rss',  # Midjourney 更新
 }
 
 # OpenClaw news sources
@@ -164,7 +179,7 @@ def translate_batch(texts, target_lang='en|zh'):
     
     return translations
 
-def make_card(item, is_hot=False, is_design=False, is_openclaw=False):
+def make_card(item, is_hot=False, is_design=False, is_openclaw=False, is_product=False):
     badges = []
     if is_hot:
         badges.append('<span class="hot-badge">🔥 热门</span>')
@@ -172,6 +187,8 @@ def make_card(item, is_hot=False, is_design=False, is_openclaw=False):
         badges.append('<span class="design-badge">🎨 设计</span>')
     if is_openclaw:
         badges.append('<span class="openclaw-badge">🦞 OpenClaw</span>')
+    if is_product:
+        badges.append('<span class="product-badge">📢 产品</span>')
     badges.append('<span class="source-badge">🔍 Google 直达</span>')
     
     cls = "news-card"
@@ -241,6 +258,22 @@ def main():
     openclaw_news = fetch_openclaw_news(max_items=5)
     print(f"    ✅ {len(openclaw_news)} items")
     
+    # Fetch product announcements
+    print("  - product announcements...")
+    product_news = []
+    for name, url in PRODUCT_FEEDS.items():
+        items, error = fetch_feed(url, max_items=5)
+        if error:
+            print(f"    ⚠️  {name}: {error}")
+        else:
+            recent = [i for i in items if is_recent(i['published'], days=3)]
+            if recent:
+                print(f"    ✅ {name}: {len(recent)} items")
+                # 标记为产品更新
+                for item in recent:
+                    item['is_product'] = True
+                product_news.extend(recent)
+    
     # Deduplicate
     seen = set()
     unique_news = []
@@ -256,7 +289,15 @@ def main():
             seen_design.add(item['title'])
             unique_design.append(item)
     
-    print(f"\n📊 Unique: Global={len(unique_news)}, Design={len(unique_design)}")
+    # 去重产品资讯
+    seen_product = set()
+    unique_product = []
+    for item in product_news:
+        if item['title'] not in seen_product:
+            seen_product.add(item['title'])
+            unique_product.append(item)
+    
+    print(f"\n📊 Unique: Global={len(unique_news)}, Design={len(unique_design)}, Product={len(unique_product)}")
     
     # Translate in batch
     print("\n🌏 Translating to Chinese...")
@@ -292,6 +333,19 @@ def main():
         item['title_cn'] = item['title']
         item['summary_cn'] = item['summary']
     
+    # Product news translations (mix of Chinese and English)
+    product_titles = [item['title'] for item in unique_product[:10]]
+    product_summaries = [item['summary'][:100] for item in unique_product[:10]]
+    
+    print("  Translating product titles...")
+    product_title_trans = translate_batch(product_titles)
+    print("  Translating product summaries...")
+    product_summary_trans = translate_batch(product_summaries)
+    
+    for i, item in enumerate(unique_product[:10]):
+        item['title_cn'] = product_title_trans[i] if i < len(product_title_trans) else item['title']
+        item['summary_cn'] = product_summary_trans[i] + '...' if i < len(product_summary_trans) else item['summary']
+    
     # Read template
     with open(TEMPLATE_FILE, 'r', encoding='utf-8') as f:
         template = f.read()
@@ -310,6 +364,11 @@ def main():
         make_card(item, is_openclaw=True, is_hot=(i == 0)) for i, item in enumerate(openclaw_news[:5])
     ])
     
+    # Product news HTML
+    product_html = '\n'.join([
+        make_card(item, is_hot=(i == 0)) for i, item in enumerate(unique_product[:8])
+    ])
+    
     content = template
     content = content.replace('2026.03.24', dates['badge'])
     content = re.sub(r'<title>AI 前沿资讯日报 - [^<]+</title>', 
@@ -317,8 +376,15 @@ def main():
     content = re.sub(r'<p class="hero-date">[^<]+</p>',
                      f'<p class="hero-date">{dates["cn"]} {dates["weekday"]}</p>', content)
     
+    # Insert product news
     content = re.sub(
-        r'(<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>\s*<div class="news-grid">).*?(</div>\s*<h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>)',
+        r'(<h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>\s*<div class="news-grid" id="product-news">).*?(</div>\s*<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>)',
+        r'\1' + product_html + '\n        ' + r'\2',
+        content, flags=re.DOTALL
+    )
+    
+    content = re.sub(
+        r'(<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>\s*<div class="news-grid">).*?(</div>\s*<h2 class="section-title"><span class="emoji">🦞</span>openclaw 龙虾资讯</h2>)',
         r'\1' + global_html + '\n        ' + r'\2',
         content, flags=re.DOTALL
     )
