@@ -1,145 +1,115 @@
 {
-  "fetched_at": "2026-03-25T09:20:14.230891",
+  "fetched_at": "2026-03-30T11:42:07.583232",
   "global_news": [
     {
-      "title": "With $3.5B in fresh capital, Kleiner Perkins is going all in on AI",
-      "link": "https://techcrunch.com/2026/03/24/with-3-5b-in-fresh-capital-kleiner-perkins-is-going-all-in-on-ai/",
-      "published": "Wed, 25 Mar 2026 00:47:20 +0000",
-      "summary": "The fundraise includes $1 billion for investing in early-stage startups, and $2.5 billion for late-stage growth businesses."
+      "title": "Why OpenAI really shut down Sora",
+      "link": "https://techcrunch.com/2026/03/29/why-openai-really-shut-down-sora/",
+      "published": "Mon, 30 Mar 2026 03:09:38 +0000",
+      "summary": "OpenAI's decision last week to shut down Sora, its AI video-generation tool, just six months after releasing it to the public raised immediate suspicions. The app had invited users to upload their own"
     },
     {
-      "title": "OpenAI’s Sora was the creepiest app on your phone — now it’s shutting down",
-      "link": "https://techcrunch.com/2026/03/24/openais-sora-was-the-creepiest-app-on-your-phone-now-its-shutting-down/",
-      "published": "Tue, 24 Mar 2026 23:57:55 +0000",
-      "summary": "Though the underlying Sora 2 video- and audio-generation model is scarily impressive, there was not sustained interest in an AI-only social feed."
+      "title": "Sora’s shutdown could be a reality check moment for AI video",
+      "link": "https://techcrunch.com/2026/03/29/soras-shutdown-could-be-a-reality-check-moment-for-ai-video/",
+      "published": "Sun, 29 Mar 2026 16:30:00 +0000",
+      "summary": "Is this just normal corporate strategy, or are we about to see a broader pullback on AI-generated video?"
     },
     {
-      "title": "Kentucky woman rejects $26M offer to turn her farm into a data center",
-      "link": "https://techcrunch.com/2026/03/24/kentucky-woman-rejects-26-million-offer-to-turn-her-farm-into-a-data-center/",
-      "published": "Tue, 24 Mar 2026 22:22:57 +0000",
-      "summary": "A \"major artificial intelligence company\" reportedly offered a Kentucky family $26 million to build a data center on their farm."
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds",
+      "link": "https://techcrunch.com/2026/03/28/bluesky-leans-into-ai-with-attie-an-app-for-building-custom-feeds/",
+      "published": "Sat, 28 Mar 2026 23:00:00 +0000",
+      "summary": "Bluesky’s new app Attie uses AI to help people build custom feeds the open social networking protocol atproto."
     },
     {
-      "title": "Anthropic hands Claude Code more control, but keeps it on a leash",
-      "link": "https://techcrunch.com/2026/03/24/anthropic-hands-claude-code-more-control-but-keeps-it-on-a-leash/",
-      "published": "Tue, 24 Mar 2026 21:00:30 +0000",
-      "summary": "Anthropic’s new auto mode for Claude Code lets AI execute tasks with fewer approvals, reflecting a broader shift toward more autonomous tools that balance speed with safety through built-in safeguards"
+      "title": "Stanford study outlines dangers of asking AI chatbots for personal advice",
+      "link": "https://techcrunch.com/2026/03/28/stanford-study-outlines-dangers-of-asking-ai-chatbots-for-personal-advice/",
+      "published": "Sat, 28 Mar 2026 20:45:54 +0000",
+      "summary": "While there’s been plenty of debate about AI sycophancy, a new study by Stanford computer scientists attempts to measure how harmful that tendency might be."
     },
     {
-      "title": "Spotify tests new tool to stop AI slop from being attributed to real artists",
-      "link": "https://techcrunch.com/2026/03/24/spotify-tests-new-tool-to-stop-ai-slop-from-being-attributed-to-real-artists/",
-      "published": "Tue, 24 Mar 2026 20:56:25 +0000",
-      "summary": "The idea behind the new tool is to give artists more control over which tracks are associated with their name on Spotify."
+      "title": "Elon Musk’s last co-founder reportedly leaves xAI",
+      "link": "https://techcrunch.com/2026/03/28/elon-musks-last-co-founder-reportedly-leaves-xai/",
+      "published": "Sat, 28 Mar 2026 16:11:16 +0000",
+      "summary": "All but two of Musk's 11 xAI co-founders departed before this week."
     },
     {
-      "title": "Databricks bought two startups to underpin its new AI security product",
-      "link": "https://techcrunch.com/2026/03/24/databricks-buys-two-startups-lakewatch-antimatter-siftd-ai-security/",
-      "published": "Tue, 24 Mar 2026 20:40:56 +0000",
-      "summary": "With an overflowing war chest from its recent $5 billion raise, Databricks is buying startups and looking for more. It acquired Antimatter and SiftD.ai."
+      "title": "Anthropic’s Claude popularity with paying consumers is skyrocketing",
+      "link": "https://techcrunch.com/2026/03/28/anthropics-claude-popularity-with-paying-consumers-is-skyrocketing/",
+      "published": "Sat, 28 Mar 2026 14:15:00 +0000",
+      "summary": "Estimates for total Claude consumer users are all over the map (we've seen figures ranging from 18 million to 30 million). Anthropic hasn't disclosed this data, but a spokesperson did tell TechCrunch "
     },
     {
-      "title": "Arm is releasing the first in-house chip in its 35-year history",
-      "link": "https://techcrunch.com/2026/03/24/arm-is-releasing-its-first-in-house-chip-in-its-35-year-history/",
-      "published": "Tue, 24 Mar 2026 19:48:54 +0000",
-      "summary": "Arm is producing its own CPU for the first time. It developed the CPU with Meta, which is also the chip's first customer."
+      "title": "Why SoftBank’s new $40B loan points to a 2026 OpenAI IPO",
+      "link": "https://techcrunch.com/2026/03/27/why-softbanks-new-40b-loan-points-to-a-2026-openai-ipo/",
+      "published": "Fri, 27 Mar 2026 21:44:45 +0000",
+      "summary": "Wall Street giants JPMorgan and Goldman Sachs are extending a 12-month, unsecured loan to the Japanese conglomerate."
     },
     {
-      "title": "OpenAI’s plans to make ChatGPT more like Amazon aren’t going so well",
-      "link": "https://techcrunch.com/2026/03/24/openais-plans-to-make-chatgpt-more-like-amazon-arent-going-so-well/",
-      "published": "Tue, 24 Mar 2026 19:27:56 +0000",
-      "summary": "OpenAI says it's moving away from Instant Checkout, which allowed users to buy items directly through the ChatGPT interface."
+      "title": "Memory chip giant SK hynix could help end ‘RAMmageddon’ with blockbuster US IPO",
+      "link": "https://techcrunch.com/2026/03/27/memory-chip-giant-sk-hynix-could-help-end-rammageddon-with-blockbuster-us-ipo/",
+      "published": "Fri, 27 Mar 2026 19:11:28 +0000",
+      "summary": "SK hynix’s potential U.S. listing could raise $10-$14 billion to help it build more capacity, encourage others to follow, and end the 'RAMmageddon' memory shortage."
     },
     {
-      "title": "Google TV’s new Gemini features keep fans updated on sports teams and more",
-      "link": "https://techcrunch.com/2026/03/24/google-tv-new-gemini-features-keep-fans-updated-on-sports-teams-deep-dives-visual-answers/",
-      "published": "Tue, 24 Mar 2026 19:12:11 +0000",
-      "summary": "Three Gemini-powered features are coming to your Google TV. This includes visual responses, deep dives, and sports briefs."
+      "title": "VCs are betting billions on AI’s next wave, so why is OpenAI killing Sora?",
+      "link": "https://techcrunch.com/podcast/vcs-are-betting-billions-on-ais-next-wave-so-why-is-openai-killing-sora/",
+      "published": "Fri, 27 Mar 2026 15:40:19 +0000",
+      "summary": "When an 82-year-old Kentucky woman was&#160;offered $26 million&#160;from an AI company that wanted to build a data center on her land, she said no. Sure, that same company can try to rezone&#160;2,00"
     },
     {
-      "title": "OpenAI adds open source tools to help developers build for teen safety",
-      "link": "https://techcrunch.com/2026/03/24/openai-adds-open-source-tools-to-help-developers-build-for-teen-safety/",
-      "published": "Tue, 24 Mar 2026 18:41:34 +0000",
-      "summary": "Rather than working from scratch to figure out how to make AI safer for teens, developers can use these policies to fortify what they build."
-    },
-    {
-      "title": "Talat’s AI meeting notes stay on your machine, not in the cloud",
-      "link": "https://techcrunch.com/2026/03/24/talats-ai-meeting-notes-stay-on-your-machine-not-in-the-cloud/",
-      "published": "Tue, 24 Mar 2026 18:41:33 +0000",
-      "summary": "The subscription-free AI meeting notes app is a local-first twist on notetaking tools like Granola."
-    },
-    {
-      "title": "Doss raises $55M for AI inventory management that plugs into ERP",
-      "link": "https://techcrunch.com/2026/03/24/doss-raises-55m-for-ai-inventory-management-that-plugs-into-erp/",
-      "published": "Tue, 24 Mar 2026 17:18:29 +0000",
-      "summary": "Doss's AI-powered inventory management system integrates with existing ERP systems. The Series B round was co-led by Madrona and Premji Invest."
-    },
-    {
-      "title": "Meet the former Apple designer building a new AI interface at Hark",
-      "link": "https://techcrunch.com/2026/03/24/meet-the-former-apple-designer-building-a-new-ai-interface-at-hark/",
-      "published": "Tue, 24 Mar 2026 16:00:00 +0000",
-      "summary": "The company said it would design models, hardware, and interfaces in tandem to deliver a \"seamless end-to-end personal intelligence product.\""
-    },
-    {
-      "title": "Mirage raises $75M to continue building models for its AI video-editing app Captions",
-      "link": "https://techcrunch.com/2026/03/24/mirage-raises-75m-to-continue-building-models-for-its-ai-video-editing-app-captions/",
-      "published": "Tue, 24 Mar 2026 13:00:00 +0000",
-      "summary": "Mirage, the maker of video-editing app Captions, has raised $75 million in growth financing from General Catalyst's Customer Value Fund (CVF)."
-    },
-    {
-      "title": "Agile Robots becomes the latest robotics company to partner with Google DeepMind",
-      "link": "https://techcrunch.com/2026/03/24/agile-robots-becomes-the-latest-robotics-company-to-partner-with-google-deepmind/",
-      "published": "Tue, 24 Mar 2026 12:05:00 +0000",
-      "summary": "Agile Robots will incorporate Google DeepMind's robotics foundation models into its bots while collecting data for the AI research lab."
+      "title": "OpenAI shuts down Sora while Meta gets shut out in court",
+      "link": "https://techcrunch.com/video/openai-shuts-down-sora-while-meta-gets-shut-out-in-court/",
+      "published": "Fri, 27 Mar 2026 13:30:00 +0000",
+      "summary": "When an 82-year-old Kentucky woman was&#160;offered $26 million&#160;from an AI company that wanted to build a data center on her land, she said no. Sure, that same company can try to rezone&#160;2,00"
     }
   ],
   "design_news": [
     {
-      "title": "Apple's latest MacBook Pro Max is ridiculously powerful and ridiculously expensive",
-      "link": "https://www.creativebloq.com/tech/laptops/apples-latest-macbook-pro-max-is-ridiculously-powerful-and-ridiculously-expensive",
-      "published": "Tue, 24 Mar 2026 16:52:05 +0000",
-      "summary": "Apple takes the MacBook Pro to the next level"
+      "title": "Star Wars: Dark Forces Remaster (PS5) review: surprisingly fast and authentic",
+      "link": "https://www.creativebloq.com/entertainment/gaming/star-wars-dark-forces-remaster-ps5-review-surprisingly-fast-and-authentic",
+      "published": "Sun, 29 Mar 2026 13:00:00 +0000",
+      "summary": "Why this ‘90s shooter is worth replaying."
     },
     {
-      "title": "How Croak is bringing hand-drawn animation back with a modern twist",
-      "link": "https://www.creativebloq.com/3d/video-game-design/how-croak-is-bringing-hand-drawn-animation-back-without-breaking-modern-gameplay",
-      "published": "Tue, 24 Mar 2026 16:00:00 +0000",
-      "summary": "Woodrunner Games' Max Petroff reveals the art of squash, stretch, and split-second precision."
+      "title": "Harry Potter Book Nooks lead the cosy craft trend, and they're on sale",
+      "link": "https://www.creativebloq.com/creative-inspiration/harry-potter-book-nooks-lead-the-cosy-craft-trend-and-theyre-on-sale",
+      "published": "Sun, 29 Mar 2026 12:00:00 +0000",
+      "summary": "Get these popular kits for less."
     },
     {
-      "title": "Why Disney’s Moana trailer is causing controversy - from colour grading to The Rock’s wig",
-      "link": "https://www.creativebloq.com/entertainment/movies-tv-shows/why-disneys-moana-trailer-is-causing-controversy-from-colour-grading-to-the-rocks-wig",
-      "published": "Tue, 24 Mar 2026 15:08:50 +0000",
-      "summary": "Fans of the original animation aren't impressed."
+      "title": "'I don’t think about relevance, I think about doing good work': 5 questions with Laura Stein",
+      "link": "https://www.creativebloq.com/professional-development/creative-careers/i-dont-think-about-relevance-i-think-about-doing-good-work-5-questions-with-laura-stein",
+      "published": "Sun, 29 Mar 2026 11:00:00 +0000",
+      "summary": "Bruce Mau Design's chief creative officer discusses her journey as a \"lifelong learner\"."
     },
     {
-      "title": "Eurovision keeps making awful mascots and I’m here for it",
-      "link": "https://www.creativebloq.com/design/eurovision-keeps-making-awful-mascots-and-im-here-for-it",
-      "published": "Tue, 24 Mar 2026 11:20:44 +0000",
-      "summary": "Auri has won my heart."
+      "title": "This hand-drawn game looks like Cuphead meets DuckTales",
+      "link": "https://www.creativebloq.com/entertainment/movies-tv-shows/eternal-life-of-goldman-looks-like-cuphead-meets-ducktales",
+      "published": "Sun, 29 Mar 2026 10:00:00 +0000",
+      "summary": "A free demo of The Eternal Life of Goldman is available to play now."
     },
     {
-      "title": "Miyazaki inspired this digital artist to turn to watercolours to create his RPG world",
-      "link": "https://www.creativebloq.com/art/miyazaki-inspired-this-digitally-trained-artist-to-turn-to-water-colours-to-create-his-rpg-world",
-      "published": "Tue, 24 Mar 2026 09:00:00 +0000",
-      "summary": "Discover Roberto Gatto's distinct watercolour art style."
+      "title": "This weird Japanese ad has ruined the way I look at jelly beans forever",
+      "link": "https://www.creativebloq.com/design/advertising/this-weird-japanese-ad-has-ruined-the-way-i-look-at-jelly-beans-forever",
+      "published": "Sun, 29 Mar 2026 08:00:00 +0000",
+      "summary": "I have no idea what’s going on, but I love it."
     },
     {
-      "title": "The collectible characters in this video game all exist in the real world",
-      "link": "https://www.creativebloq.com/3d/video-game-design/the-collectible-characters-in-this-video-game-all-actually-exist",
-      "published": "Tue, 24 Mar 2026 08:00:00 +0000",
-      "summary": "Sculplings was made with over 400 clay models."
+      "title": "Out of my favourite 5 Bluetooth headphones, the cheapest just got cheaper",
+      "link": "https://www.creativebloq.com/tech/headphones-earbuds/my-top-pick-of-the-top-5-most-popular-bluetooth-headphones-is-currently-the-cheapest",
+      "published": "Sun, 29 Mar 2026 07:00:00 +0000",
+      "summary": "Boost your listening experience with these great-value cans."
     },
     {
-      "title": "A wildlife photographer's hilariously tragic photo of a captured vole went viral. Then it got turned into a movie poster",
-      "link": "https://www.creativebloq.com/photography/a-wildlife-photographers-hilariously-tragic-photo-of-a-captured-vole-went-viral-then-it-got-turned-into-a-movie-poster",
-      "published": "Tue, 24 Mar 2026 06:00:00 +0000",
-      "summary": "Just look at his little face."
+      "title": "Social media design is finally facing the reckoning it deserves",
+      "link": "https://www.creativebloq.com/design/social-media/social-media-design-is-finally-facing-the-reckoning-it-deserves",
+      "published": "Sun, 29 Mar 2026 06:00:00 +0000",
+      "summary": "Facebook and YouTube were just found liable in a social media addiction trial. But what comes next?"
     },
     {
-      "title": "Artist shares how he created Penguin Random House's Playful Penguins campaign",
-      "link": "https://www.creativebloq.com/art/illustration/artists-shares-how-he-created-penguin-random-houses-playful-penguins-campaign",
-      "published": "Mon, 23 Mar 2026 16:00:00 +0000",
-      "summary": "Alan the penguin gets an ensemble cast."
+      "title": "3 things you need to level up your craft stall",
+      "link": "https://www.creativebloq.com/creative-inspiration/digital-crafting/3-things-you-need-to-level-up-your-craft-stall",
+      "published": "Sat, 28 Mar 2026 17:00:00 +0000",
+      "summary": "Selling at a market or fete? These Amazon Spring deals are must-buys."
     }
   ]
 }
