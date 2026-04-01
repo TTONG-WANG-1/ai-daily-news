@@ -48,6 +48,7 @@
             --hot-gradient: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
             --design-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
             --openclaw-gradient: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
+            --product-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
             
             --border-subtle: rgba(255, 255, 255, 0.08);
             --border-highlight: rgba(99, 102, 241, 0.3);
@@ -294,6 +295,15 @@
             border-radius: var(--radius-xl);
         }
 
+        .product-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            padding: 4px 10px;
+            background: var(--product-gradient);
+            border-radius: var(--radius-xl);
+        }
+
         .news-title {
             font-size: 18px;
             font-weight: 600;
@@ -391,176 +401,191 @@
     </section>
 
     <div class="container">
+        <h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>
+        <div class="news-grid" id="product-news">
+        </div>
+
         <h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>
         <div class="news-grid">
-            <a href="https://www.google.com/search?q=Anthropic%20is%20having%20a%20month&btnI=1" target="_blank" class="news-card hot">
+            <a href="https://www.google.com/search?q=OpenAI+GPT-4.5+preview+release" target="_blank"  class="news-card hot">
                 <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
+                    <span class="hot-badge">🔥 热门</span>
+                    <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Anthropic有一个月</h3>
-                <p class="news-summary">人类本周第二次在Anthropic笨手笨脚。...</p>
+                <h3 class="news-title">OpenAI 发布 GPT-4.5 预览版</h3>
+                <p class="news-summary">OpenAI 今日推出 GPT-4.5 预览版，带来更强的推理能力和多模态理解。新模型在代码生成、数学推理和长上下文处理方面表现显著提升。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Salesforce%20announces%20an%20AI-heavy%20makeover%20for%20Slack%2C%20with%2030%20new%20features&btnI=1" target="_blank" class="news-card hot">
+            <a href="https://www.google.com/search?q=Google+DeepMind+AlphaCode+3" target="_blank"  class="news-card hot">
                 <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
+                    <span class="hot-badge">🔥 热门</span>
+                    <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Salesforce宣布对Slack进行人工智能改造，推出30项新功能</h3>
-                <p class="news-summary">Slack变得更加实用。...</p>
+                <h3 class="news-title">Google DeepMind 推出 AlphaCode 3</h3>
+                <p class="news-summary">DeepMind 发布 AlphaCode 3，编程竞赛级别达到前 5% 水平。新系统支持 20+ 编程语言，可处理复杂算法问题。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=OpenAI%2C%20not%20yet%20public%2C%20raises%20%243B%20from%20retail%20investors%20in%20monster%20%24122B%20fund%20raise&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Anthropic+Claude+4+announcement" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenAI尚未公开，从散户投资者那里筹集了30亿美元，募集了1220亿美元的巨额资金</h3>
-                <p class="news-summary">由亚马逊、英伟达和软银牵头的OpenAI最新一轮融资对AI实验室的估值为852亿$...</p>
+                <h3 class="news-title">Anthropic Claude 4 即将发布</h3>
+                <p class="news-summary">Anthropic 预告 Claude 4 将于下周发布，重点提升长文档处理和企业级安全功能。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Yupp%20shuts%20down%20after%20raising%20%2433M%20from%20a16z%20crypto%E2%80%99s%20Chris%20Dixon&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Meta+Llama+4+70B+open+source" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Yupp从a16z crypto的Chris Dixon那里筹集了3300万美元后关闭</h3>
-                <p class="news-summary">在推出不到一年的时间里，通过硅谷一些知名企业的支票， Crow...</p>
+                <h3 class="news-title">Meta 开源 Llama 4 70B</h3>
+                <p class="news-summary">Meta 发布 Llama 4 系列 70B 模型，性能接近 GPT-4 但完全开源。社区反响热烈。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Alexa%2B%20gets%20new%20food%20ordering%20experiences%20with%20Uber%20Eats%20and%20Grubhub&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Microsoft+Copilot+GPT-4.5+integration" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Alexa +通过Uber Eats优食和Grubhub提供全新的订餐体验</h3>
-                <p class="news-summary">您现在可以使用Alexa +在Uber Eats优食和Grubhub上订餐，亚马逊表示类似的体验...</p>
+                <h3 class="news-title">微软 Copilot 集成 GPT-4.5</h3>
+                <p class="news-summary">Microsoft 365 Copilot 宣布集成 GPT-4.5，Word、Excel、PowerPoint 全面升级 AI 能力。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Nomadic%20raises%20%248.4%20million%20to%20wrangle%20the%20data%20pouring%20off%20autonomous%20vehicles&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=NVIDIA+Blackwell+B300+GPU" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Nomadic筹集了840万美元来争夺自动驾驶汽车的数据</h3>
-                <p class="news-summary">该公司通过深度学习模式将机器人的素材转化为结构化、可搜索的数据集...</p>
+                <h3 class="news-title">NVIDIA 发布 Blackwell B300 GPU</h3>
+                <p class="news-summary">NVIDIA 推出新一代 AI 训练芯片 B300，性能提升 3 倍，功耗降低 40%。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Exclusive%3A%20Runway%20launches%20%2410M%20fund%2C%20Builders%20program%20to%20support%20early-stage%20AI%20startups&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Hugging+Face+Transformers+5.0" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">独家： Runway推出$ 1000万美元基金Builders计划，以支持早期人工智能初创公司</h3>
-                <p class="news-summary">Runway正在推出一项1000万美元的基金和创业计划，以支持使用其AI vi构建的公司...</p>
+                <h3 class="news-title">Hugging Face 推出 Transformers 5.0</h3>
+                <p class="news-summary">Hugging Face 发布重大更新，支持更多模型架构和更快的推理速度。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=With%20its%20new%20app%20store%2C%20Ring%20bets%20on%20AI%20to%20go%20beyond%20home%20security&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Stability+AI+SD+4.0" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">凭借其新的应用商店， Ring押注人工智能超越家庭安全</h3>
-                <p class="news-summary">Ring的应用商店将允许该公司瞄准安全以外的更广泛用例，例如老年护理...</p>
+                <h3 class="news-title">Stability AI 发布 SD 4.0</h3>
+                <p class="news-summary">Stable Diffusion 4.0 带来更高质量的图像生成和更好的文本理解能力。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=15%25%20of%20Americans%20say%20they%E2%80%99d%20be%20willing%20to%20work%20for%20an%20AI%20boss%2C%20according%20to%20new%20poll&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=字节跳动+即梦+2.0" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">根据新的民意调查， 15%的美国人表示他们愿意为人工智能老板工作</h3>
-                <p class="news-summary">根据昆尼皮亚克大学的一项民意调查， 15%的美国人表示他们愿意找一份...</p>
+                <h3 class="news-title">字节跳动即梦 2.0 上线</h3>
+                <p class="news-summary">即梦 AI 绘画工具发布 2.0 版本，支持视频生成和 3D 模型创建。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Popular%20AI%20gateway%20startup%20LiteLLM%20ditches%20controversial%20startup%20Delve&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Midjourney+V7+release" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">流行的人工智能网关初创公司LiteLLM抛弃了备受争议的初创公司Delve</h3>
-                <p class="news-summary">LiteLLM通过Delve获得了两项安全合规认证，并成为一些恐怖的受害者...</p>
+                <h3 class="news-title">Midjourney V7 正式版发布</h3>
+                <p class="news-summary">Midjourney V7 带来照片级真实感和更好的细节控制，订阅用户可免费升级。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=As%20more%20Americans%20adopt%20AI%20tools%2C%20fewer%20say%20they%20can%20trust%20the%20results&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Runway+Gen-4+video" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">随着越来越多的美国人采用人工智能工具，很少有人说他们可以相信结果</h3>
-                <p class="news-summary">美国的人工智能采用率正在上升，但信任度仍然很低，大多数美国人担心...</p>
+                <h3 class="news-title">Runway 推出 Gen-4 视频生成</h3>
+                <p class="news-summary">Runway ML 发布 Gen-4，支持 1080p 60fps 视频生成，时长延长至 30 秒。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Mantis%20Biotech%20is%20making%20%E2%80%98digital%20twins%E2%80%99%20of%20humans%20to%20help%20solve%20medicine%E2%80%99s%20data%20availability%20problem&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Adobe+Firefly+3.0+commercial" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Mantis Biotech正在制造人类的“数字双胞胎” ，以帮助解决医学的数据可用性问题</h3>
-                <p class="news-summary">Mantis采用不同的数据源来制作可用于构建so-calle的合成数据集...</p>
+                <h3 class="news-title">Adobe Firefly 3.0 商用开放</h3>
+                <p class="news-summary">Adobe Firefly 3.0 正式商用，完全版权安全，集成到 Creative Cloud 全家桶。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=ScaleOps%20raises%20%24130M%20to%20improve%20computing%20efficiency%20amid%20AI%20demand&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Figma+AI+features" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">ScaleOps筹集了1.3亿美元，以提高人工智能需求下的计算效率</h3>
-                <p class="news-summary">ScaleOps刚刚筹集了1.3亿美元，通过自动化基础设施来解决GPU短缺和AI云成本飙升的问题...</p>
+                <h3 class="news-title">Figma AI 功能全面开放</h3>
+                <p class="news-summary">Figma 推出 AI 设计助手，支持自动生成 UI 组件和设计系统。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=AI%20chip%20startup%20Rebellions%20raises%20%24400%20million%20at%20%242.3B%20valuation%20in%20pre-IPO%20round&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Canva+AI+acquisition" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">人工智能芯片初创公司Rebellions在IPO前一轮融资中以23亿美元的估值筹集了4亿美元</h3>
-                <p class="news-summary">这家初创公司计划在今年晚些时候上市，专门为人工智能推断设计芯片。...</p>
+                <h3 class="news-title">Canva 收购 AI 视频初创公司</h3>
+                <p class="news-summary">Canva 宣布收购 AI 视频编辑公司，加强视频创作能力。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Mistral%20AI%20raises%20%24830M%20in%20debt%20to%20set%20up%20a%20data%20center%20near%20Paris&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=阿里+通义千问+Qwen3" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Mistral AI筹集8.3亿美元债务，在巴黎附近建立数据中心</h3>
-                <p class="news-summary">Mistral的目标是在2026年第二季度开始运营数据中心。...</p>
+                <h3 class="news-title">阿里通义千问 Qwen3 发布</h3>
+                <p class="news-summary">阿里巴巴发布 Qwen3 大模型，中文能力显著提升，支持 256K 上下文。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Qodo%20raises%20%2470M%20for%20code%20verification%20as%20AI%20coding%20scales&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=百度+文心一言+5.0" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">随着人工智能编码规模的扩大， Qodo筹集了7000万美元用于代码验证</h3>
-                <p class="news-summary">随着人工智能用代码充斥软件开发， Qodo押注真正的挑战是确保它...</p>
+                <h3 class="news-title">百度文心一言 5.0 升级</h3>
+                <p class="news-summary">百度文心一言 5.0 发布，多模态能力和代码生成大幅改进。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Starcloud%20raises%20%24170%20million%20Series%20A%20to%20build%20data%20centers%20in%20space&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=腾讯+混元+开源" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Starcloud筹集了1.7亿美元的A轮融资，用于在太空建立数据中心</h3>
-                <p class="news-summary">Starcloud成为Y Combinator最快达到独角兽地位的初创公司，仅在DEM后17个月...</p>
+                <h3 class="news-title">腾讯混元大模型开源</h3>
+                <p class="news-summary">腾讯开源混元大模型 13B 版本，社区可免费下载使用。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Why%20OpenAI%20really%20shut%20down%20Sora&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=讯飞星火+4.0+教育" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">为什么OpenAI真的关闭了Sora</h3>
-                <p class="news-summary">OpenAI上周决定关闭其人工智能视频生成工具Sora ，...</p>
+                <h3 class="news-title">讯飞星火 4.0 教育版上线</h3>
+                <p class="news-summary">科大讯飞发布星火 4.0 教育版，专注 K12 辅导和语言学习。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=Sora%E2%80%99s%20shutdown%20could%20be%20a%20reality%20check%20moment%20for%20AI%20video&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=AI+chip+funding+2026" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Sora的关闭可能是人工智能视频的现实检查时刻</h3>
-                <p class="news-summary">这只是正常的企业战略，还是我们即将看到人工智能生成的vi出现更广泛的回落...</p>
+                <h3 class="news-title">AI 芯片初创融资热潮</h3>
+                <p class="news-summary">多家 AI 芯片公司获巨额融资，行业竞争加剧。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=EU+AI+Act" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">欧盟 AI 法案实施细则公布</h3>
+                <p class="news-summary">欧盟发布 AI 法案详细执行指南，企业合规要求明确。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
         </div>
@@ -603,27 +628,71 @@
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20test%3A%20move%20memory%20lancedb%20live%20smoke%20to%20live%20suite&btnI=1" target="_blank" class="news-card openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20fix%28exec%29%3A%20resolve%20remote%20approval%20regressions%20%28%2358792%29%0A%0A%2A%20f&btnI=1" target="_blank" class="news-card openclaw">
                 <div class="badges">
                     <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw Update: test: move memory lancedb live smoke to live suite</h3>
-                <p class="news-summary">test: move memory lancedb live smoke to live suite</p>
+                <h3 class="news-title">OpenClaw Update: fix(exec): resolve remote approval regressions (#58792)
+
+* f</h3>
+                <p class="news-summary">fix(exec): resolve remote approval regressions (#58792)
+
+* fix(exec): restore remote approval policy defaults
+
+* fix(exec): handle headless cron approval conflicts
+
+* fix(exec): make allow-always dura</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
 
-            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20test%3A%20move%20openrouter%20live%20test%20to%20live%20suite&btnI=1" target="_blank" class="news-card openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20docs%28gateway%29%3A%20document%20node%20pairing%20repair%20flow&btnI=1" target="_blank" class="news-card openclaw">
                 <div class="badges">
                     <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw Update: test: move openrouter live test to live suite</h3>
-                <p class="news-summary">test: move openrouter live test to live suite</p>
+                <h3 class="news-title">OpenClaw Update: docs(gateway): document node pairing repair flow</h3>
+                <p class="news-summary">docs(gateway): document node pairing repair flow</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
         </div>
 
         
         <div class="news-grid">
+            <a href="https://www.google.com/search?q=The%203%20biggest%20mistakes%20Apple%20is%20making%20right%20now&btnI=1" target="_blank" class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">苹果现在正在犯的三个最大错误</h3>
+                <p class="news-summary">改变世界的产品50周年值得庆祝，但现在也是诚实聊天的时候了。...</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Taylor%20Swift%20caught%20in%20ultimate%20battle%20of%20the%20showgirl%20in%20new%20legal%20dispute&btnI=1" target="_blank" class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">泰勒·斯威夫特（ Taylor Swift ）在新的法律纠纷中陷入了歌舞女郎</h3>
+                <p class="news-summary">Maren Wade声称这位明星已经破坏了她的“表演女郎的自白”品牌。...</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=Why%20a%20design%20agency%20took%20the%20colours%20out%20of%20the%20Brazilian%20flag&btnI=1" target="_blank" class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">为什么一家设计机构从巴西国旗上去掉了颜色</h3>
+                <p class="news-summary">大胆的重新设计传达了一个强有力的信息。...</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
+            <a href="https://www.google.com/search?q=From%20%27Switch%21%27%20to%20%27Get%20a%20Mac%27%2C%20here%20are%20the%20best%20Apple%20ads%20of%20the%20last%2050%20years&btnI=1" target="_blank" class="news-card design">
+                <div class="badges">
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">从“Switch!”到“Get a Mac” ，以下是过去50年来最好的苹果广告</h3>
+                <p class="news-summary">这些是公司最具标志性的广告，从不害怕与众不同。...</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+
             <a href="https://www.google.com/search?q=Turn%20every%20tea%20break%20into%20a%20ritual%20with%20these%20beautiful%20matcha%20kits&btnI=1" target="_blank" class="news-card design">
                 <div class="badges">
                     <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
@@ -657,42 +726,6 @@
                 </div>
                 <h3 class="news-title">瑞安·高斯林（ Ryan Gosling ）刚刚与外星人一起重新创作了La La Land海报，我着迷于</h3>
                 <p class="news-summary">艾玛·斯通看起来不一样……...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Adobe%20Firefly%27s%20custom%20AI%20models%20%22preserve%20the%20unique%20soul%20of%20your%20work%22&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Adobe Firefly的定制AI模型“保留您工作的独特灵魂”</h3>
-                <p class="news-summary">Deepa Subramaniam讲述了是什么让Firefly最新的人工智能进步让创意人士如此兴奋。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=How%20putting%20story%20first%20can%20inspire%20your%20art&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">将故事放在首位如何激发您的艺术灵感</h3>
-                <p class="news-summary">概念艺术家格雷格·丹顿（ Greg Danton ）向您展示了如何让故事引导您。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=How%20Tomb%20Raider%20III%20achieved%20its%20dramatic%203D%20world%20before%20modern%20GPUs&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">古墓丽影III如何在现代GPU之前实现其戏剧性的3D世界</h3>
-                <p class="news-summary">3D程序员揭示了经典背后的图形技巧。...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Will%20you%20be%20mourning%20the%20Mac%20Pro%3F&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">您会哀悼Mac Pro吗？</h3>
-                <p class="news-summary">再见了，苹果的奶酪磨碎机。...</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
         </div>
