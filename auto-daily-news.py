@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AI Daily News - Automated with Chinese Translation (Optimized)
+AI Daily News - Hybrid (RSS + Tavily Search)
 """
 
 import feedparser
@@ -19,6 +19,16 @@ MEMORY_DIR = WORKSPACE / 'memory'
 STATE_FILE = MEMORY_DIR / 'ai-daily-news-state.json'
 HTML_FILE = AI_NEWS_DIR / 'index.html'
 TEMPLATE_FILE = AI_NEWS_DIR / 'template.html'
+
+# Tavily API for product announcements (better Chinese search)
+try:
+    from tavily import TavilyClient
+    TAVILY_API_KEY = "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"
+    tavily_client = TavilyClient(TAVILY_API_KEY)
+    HAS_TAVILY = True
+except Exception as e:
+    HAS_TAVILY = False
+    print(f"⚠️  Tavily not available: {e}")
 
 RSS_FEEDS = {
     'techcrunch': 'https://techcrunch.com/category/artificial-intelligence/feed/',
@@ -58,6 +68,41 @@ def get_today_date():
         'cn': now.strftime('%Y 年 %m 月 %d 日'),
         'weekday': weekdays[now.weekday()],
     }
+
+def search_with_tavily(query, max_results=10):
+    """Search news with Tavily API (better for Chinese product announcements)"""
+    if not HAS_TAVILY:
+        return []
+    
+    try:
+        response = tavily_client.search(
+            query=query,
+            search_depth="advanced",
+            max_results=max_results
+        )
+        
+        items = []
+        for result in response.get('results', []):
+            # Skip low-quality sources
+            url = result.get('url', '')
+            if any(skip in url.lower() for skip in ['youtube.com', 'news.google.com', '/search?']):
+                continue
+            
+            items.append({
+                'title': result.get('title', ''),
+                'link': url,
+                'summary': result.get('content', '')[:200],
+                'score': result.get('score', 0),
+                'published': result.get('published_date', ''),
+                'is_tavily': True
+            })
+        
+        # Sort by score and return top results
+        items.sort(key=lambda x: x['score'], reverse=True)
+        return items
+    except Exception as e:
+        print(f"  ⚠️  Tavily search error: {e}")
+        return []
 
 def fetch_feed(url, max_items=15):
     try:
@@ -264,23 +309,43 @@ def main():
     openclaw_news = fetch_openclaw_news(max_items=5)
     print(f"    ✅ {len(openclaw_news)} items")
     
-    # Fetch product announcements
-    print("  - product announcements...")
+    # Fetch product announcements with Tavily (better Chinese search)
+    print("  - product announcements (Tavily search)...")
     product_news = []
-    for name, url in PRODUCT_FEEDS.items():
-        items, error = fetch_feed(url, max_items=10)
-        if error:
-            print(f"    ⚠️  {name}: {error}")
-        else:
-            # 产品公告放宽到 3 天内（产品更新频率较低）
-            recent = [i for i in items if is_recent(i['published'], days=3)]
-            old_count = len(items) - len(recent)
-            if recent:
-                print(f"    ✅ {name}: {len(recent)} recent, ⚠️ {old_count} old (filtered)")
-                # 标记为产品更新
-                for item in recent:
+    
+    if HAS_TAVILY:
+        # Tavily search queries for product announcements
+        product_queries = [
+            ("飞书 Aily 预约 2026", "feishu_aily"),
+            ("Xiaomi MiMo Agent 框架", "xiaomi_mimo"),
+            ("OpenAI new feature 2026", "openai"),
+            ("Anthropic Claude update", "anthropic"),
+            ("Midjourney update 2026", "midjourney"),
+        ]
+        
+        for query, tag in product_queries:
+            print(f"    🔍 {query[:40]}...")
+            results = search_with_tavily(query, max_results=5)
+            if results:
+                print(f"      ✅ {len(results)} results (score: {results[0]['score']:.3f})")
+                for item in results:
                     item['is_product'] = True
-                product_news.extend(recent)
+                    item['source_tag'] = tag
+                product_news.extend(results[:3])  # Top 3 per query
+    else:
+        # Fallback to RSS feeds
+        print("    ⚠️  Tavily unavailable, using RSS fallback...")
+        for name, url in PRODUCT_FEEDS.items():
+            items, error = fetch_feed(url, max_items=10)
+            if error:
+                print(f"      ⚠️  {name}: {error}")
+            else:
+                recent = [i for i in items if is_recent(i['published'], days=3)]
+                if recent:
+                    print(f"      ✅ {name}: {len(recent)} items")
+                    for item in recent:
+                        item['is_product'] = True
+                    product_news.extend(recent)
     
     # Deduplicate
     seen = set()
