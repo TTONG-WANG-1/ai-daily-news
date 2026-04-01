@@ -181,18 +181,20 @@ def fetch_openclaw_news(max_items=5):
 def is_recent(published_str, days=1):
     """Check if news is recent (within specified days, default=1 for today/yesterday only)"""
     if not published_str:
-        return True  # No date = assume recent
+        return False  # No date = assume OLD (conservative)
     try:
         for fmt in ['%a, %d %b %Y %H:%M:%S', '%Y-%m-%dT%H:%M:%S', '%Y-%m-%d']:
             try:
                 pub_date = datetime.strptime(published_str.split('+')[0].split('Z')[0].strip(), fmt)
+                age_hours = (datetime.now() - pub_date).total_seconds() / 3600
                 age_days = (datetime.now() - pub_date).days
+                # 严格筛选：不超过 days 天（24*days 小时）
                 return age_days <= days
             except:
                 continue
-        return True
+        return False
     except:
-        return True
+        return False
 
 def translate_text(text, target_lang='en|zh'):
     """Translate single text using MyMemory API (free, no auth)"""
@@ -346,6 +348,20 @@ def main():
                     for item in recent:
                         item['is_product'] = True
                     product_news.extend(recent)
+    
+    # 如果全球新闻太少，用 Tavily 补充
+    if len(all_news) < 10 and HAS_TAVILY:
+        print("\n  ⚠️  Global news too few, supplementing with Tavily...")
+        tavily_queries = [
+            f"AI news {datetime.now().strftime('%Y-%m-%d')} artificial intelligence",
+            f"AI startup funding {datetime.now().strftime('%Y-%m-%d')}",
+        ]
+        for query in tavily_queries:
+            print(f"    🔍 {query[:50]}...")
+            results = search_with_tavily(query, max_results=10)
+            for item in results:
+                item['is_global'] = True
+            all_news.extend(results[:5])
     
     # Deduplicate
     seen = set()
