@@ -4,788 +4,344 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 前沿资讯日报 - 2026 年 04 月 08 日</title>
-    
-    <!-- Apple System Fonts -->
     <style>
-        @font-face {
-            font-family: 'PingFang SC';
-            src: local('PingFang SC Regular'), local('PingFangSC-Regular');
-            font-weight: 400;
-        }
-        @font-face {
-            font-family: 'PingFang SC';
-            src: local('PingFang SC Medium'), local('PingFangSC-Medium');
-            font-weight: 500;
-        }
-        @font-face {
-            font-family: 'PingFang SC';
-            src: local('PingFang SC Semibold'), local('PingFangSC-Semibold');
-            font-weight: 600;
-        }
-    </style>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a25;
-            --bg-glass: rgba(26, 26, 37, 0.6);
-            
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --text-tertiary: #6b6b7b;
-            
-            --accent-primary: #6366f1;
-            --accent-secondary: #8b5cf6;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-            
-            --hot-gradient: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
-            --design-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-            --openclaw-gradient: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
-            --product-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.3);
-            
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
-            
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        html { scroll-behavior: smooth; }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
+            padding: 20px;
         }
-
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
+        .container { max-width: 900px; margin: 0 auto; }
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000;
-            padding: 16px 0;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .date-badge {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-tertiary);
-            padding: 6px 14px;
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .hero {
-            position: relative;
             text-align: center;
-            padding: 160px 32px 100px;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
         }
-
-        .hero h1 {
-            font-size: clamp(48px, 10vw, 96px);
-            font-weight: 600;
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0b0 100%);
+        .header h1 {
+            font-size: 28px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
-
-        .hero p {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 16px;
-        }
-
-        .hero-date {
-            font-size: 15px;
-            color: var(--text-tertiary);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 32px 80px;
-            position: relative;
-            z-index: 1;
-        }
-
+        .header .date { color: #a0a0b0; font-size: 14px; }
+        .section { margin-bottom: 40px; }
         .section-title {
-            font-size: clamp(28px, 5vw, 42px);
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(99,102,241,0.3);
+        }
+        .section-title .icon { margin-right: 8px; }
+        .news-item {
+            background: rgba(26,26,37,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .news-item:hover {
+            transform: translateX(4px);
+            border-color: rgba(99,102,241,0.3);
+        }
+        .news-item.hot .title {
+            background: linear-gradient(135deg, #f97316, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .news-item .title {
+            font-size: 15px;
             font-weight: 600;
-            margin: 60px 0 32px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            margin-bottom: 8px;
         }
-
-        .section-title .emoji {
-            font-size: 1.2em;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 24px;
-        }
-
-        .news-card {
-            position: relative;
-            background: var(--bg-glass);
-            backdrop-filter: saturate(180%) blur(20px);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all var(--transition-base);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity var(--transition-base);
-        }
-
-        .news-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-highlight);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .news-card:hover::before {
-            opacity: 1;
-        }
-
-        .news-card.hot {
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-
-        .news-card.hot::before {
-            background: var(--hot-gradient);
-            opacity: 1;
-        }
-
-        .news-card.design {
-            border-color: rgba(6, 182, 212, 0.3);
-        }
-
-        .news-card.design::before {
-            background: var(--design-gradient);
-            opacity: 1;
-        }
-
-        .news-card.openclaw {
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-
-        .news-card.openclaw::before {
-            background: var(--openclaw-gradient);
-            opacity: 1;
-        }
-
-        .badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .source-badge {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-tertiary);
-            padding: 4px 10px;
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .hot-badge {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            padding: 4px 10px;
-            background: var(--hot-gradient);
-            border-radius: var(--radius-xl);
-        }
-
-        .design-badge {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            padding: 4px 10px;
-            background: var(--design-gradient);
-            border-radius: var(--radius-xl);
-        }
-
-        .openclaw-badge {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            padding: 4px 10px;
-            background: var(--openclaw-gradient);
-            border-radius: var(--radius-xl);
-        }
-
-        .product-badge {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            padding: 4px 10px;
-            background: var(--product-gradient);
-            border-radius: var(--radius-xl);
-        }
-
-        .news-title {
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.4;
-            color: var(--text-primary);
-            transition: color var(--transition-fast);
-        }
-
-        .news-card:hover .news-title {
-            color: var(--accent-primary);
-        }
-
-        .news-summary {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .news-link {
+        .news-item .desc {
+            color: #a0a0b0;
             font-size: 13px;
-            font-weight: 500;
-            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+        .news-item .link {
+            display: inline-block;
+            color: #6366f1;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all var(--transition-fast);
+            font-size: 13px;
+            padding: 4px 12px;
+            background: rgba(99,102,241,0.1);
+            border-radius: 6px;
+            transition: background 0.2s;
         }
-
-        .news-card:hover .news-link {
-            gap: 10px;
+        .news-item .link:hover { background: rgba(99,102,241,0.2); }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
         }
-
+        .stat-card {
+            background: rgba(26,26,37,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-card .label { color: #a0a0b0; font-size: 13px; margin-top: 8px; }
         .footer {
             text-align: center;
-            padding: 60px 32px;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-tertiary);
-            font-size: 14px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
         }
-
         .footer a {
-            color: var(--accent-primary);
+            color: #6366f1;
             text-decoration: none;
+            margin: 0 10px;
         }
-
-        @media (max-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                padding: 0 16px;
-            }
-            
-            .container {
-                padding: 0 16px 60px;
-            }
-            
-            .news-card {
-                padding: 24px;
-            }
-        }
+        .footer a:hover { text-decoration: underline; }
     </style>
-    <script>
-        // Ensure click works on mobile devices
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.news-card');
-            cards.forEach(function(card) {
-                card.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href) {
-                        window.open(href, '_blank', 'noopener,noreferrer');
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="bg-gradient"></div>
-    
-    <header class="header">
-        <div class="header-content">
-            <a href="/" class="logo">🤖 AI Daily News</a>
-            <span class="date-badge">2026.04.08</span>
-        </div>
-    </header>
-
-    <section class="hero">
-        <h1>AI 前沿资讯日报</h1>
-        <p>每日精选全球 AI 领域最新动态</p>
-        <p class="hero-date">2026 年 04 月 08 日 星期三</p>
-    </section>
-
     <div class="container">
-        <h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>
-        <div class="news-grid" id="product-news">
+        <header class="header">
+            <h1>AI 前沿资讯日报</h1>
+            <p class="date">2026 年 04 月 08 日 星期三</p>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🌍</span>全球 AI 动态（18 条）</h2>
             
-        </div>
+            <div class="news-item hot">
+                <div class="title">🔥 26 人小团队 Arcee 挑战开源 AI 模型</div>
+                <div class="desc">获社区支持</div>
+                <a class="link" href="https://www.google.com/search?q=Arcee%20open%20source%20AI%20model&btnI=1" target="_blank">查看详情 →</a>
+            </div>
 
-        <h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>
-        <div class="news-grid">
+            <div class="news-item hot">
+                <div class="title">🔥 Firmus「Southgate」AI 数据中心估值 55 亿美元</div>
+                <div class="desc">Nvidia 支持</div>
+                <a class="link" href="https://www.google.com/search?q=Firmus%20Southgate%20AI%20data%20center%205.5B&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item hot">
+                <div class="title">🔥 Intel 加入 Elon Musk 的 Terafab 芯片项目</div>
+                <div class="desc">与 SpaceX/Tesla 合作</div>
+                <a class="link" href="https://www.google.com/search?q=Intel%20Terafab%20chips%20Elon%20Musk&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item hot">
+                <div class="title">🔥 Anthropic 推出新 AI 模型 Mythos</div>
+                <div class="desc">网络安全计划</div>
+                <a class="link" href="https://www.google.com/search?q=Anthropic%20Mythos%20AI%20model%20cybersecurity&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">Uber 采用 Amazon AI 芯片</div>
+                <div class="desc">扩展 AWS 合作</div>
+                <a class="link" href="https://www.google.com/search?q=Uber%20Amazon%20AI%20chips&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">Anthropic 扩大与 Google/Broadcom 计算合作</div>
+                <div class="desc">需求飙升</div>
+                <a class="link" href="https://www.google.com/search?q=Anthropic%20Google%20Broadcom%20compute&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">Google Maps 新增 AI 照片说明功能</div>
+                <div class="desc">自动生成描述</div>
+                <a class="link" href="https://www.google.com/search?q=Google%20Maps%20AI%20photo%20captions&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">TechCrunch Disrupt 2026 门票优惠</div>
+                <div class="desc">还剩 4 天</div>
+                <a class="link" href="https://www.google.com/search?q=TechCrunch%20Disrupt%202026%20ticket&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">AI 投资趋势变化</div>
+                <div class="desc">私人财富流向早期项目</div>
+                <a class="link" href="https://www.google.com/search?q=AI%20investment%20private%20wealth&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">Rocket AI 提供麦肯锡风格报告</div>
+                <div class="desc">价格低廉</div>
+                <a class="link" href="https://www.google.com/search?q=Rocket%20AI%20McKinsey%20reports&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">OpenAI 前员工成立 1 亿美元基金</div>
+                <div class="desc">Zero Shot</div>
+                <a class="link" href="https://www.google.com/search?q=OpenAI%20alums%20100M%20fund&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">Google 推出离线 AI 听写应用</div>
+                <div class="desc">使用 Gemma 模型</div>
+                <a class="link" href="https://www.google.com/search?q=Google%20AI%20dictation%20app%20offline&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">伊朗威胁"Stargate"AI 数据中心</div>
+                <div class="desc">导弹袭击警告</div>
+                <a class="link" href="https://www.google.com/search?q=Iran%20Stargate%20AI%20data%20centers&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">OpenAI 提出 AI 经济愿景</div>
+                <div class="desc">机器人税/四天工作周</div>
+                <a class="link" href="https://www.google.com/search?q=OpenAI%20AI%20economy%20robot%20taxes&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">Startup Battlefield 200 申请开放</div>
+                <div class="desc">10 万美元奖金</div>
+                <a class="link" href="https://www.google.com/search?q=Startup%20Battlefield%20200&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">ChatGPT 应用集成教程</div>
+                <div class="desc">Spotify/Canva/Figma 等</div>
+                <a class="link" href="https://www.google.com/search?q=ChatGPT%20app%20integrations&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">TechCrunch Disrupt 门票折扣</div>
+                <div class="desc">本周省 500 美元</div>
+                <a class="link" href="https://www.google.com/search?q=TechCrunch%20Disrupt%202026%20discount&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">西班牙 Xoople 融资 1.3 亿美元</div>
+                <div class="desc">为 AI 绘制地球地图</div>
+                <a class="link" href="https://www.google.com/search?q=Xoople%20130M%20Series%20B&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🦞</span>OpenClaw 资讯（5 条）</h2>
             
-            <a href="https://www.google.com/search?q=I%20can%E2%80%99t%20help%20rooting%20for%20tiny%20open%20source%20AI%20model%20maker%20Arcee&btnI=1" target="_blank" class="news-card hot">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">I can’t help rooting for tiny open source AI model maker Arcee</h3>
-                <p class="news-summary">Arcee is a tiny 26-person U.S. startup that built a high-performing, massive, open source LLM. And i...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+            <div class="news-item hot">
+                <div class="title">🔥 v2026.4.5</div>
+                <div class="desc">移除旧配置别名</div>
+                <a class="link" href="https://www.google.com/search?q=OpenClaw%20v2026.4.5&btnI=1" target="_blank">查看详情 →</a>
+            </div>
 
-            <a href="https://www.google.com/search?q=Firmus%2C%20the%20%E2%80%98Southgate%E2%80%99%20AI%20data%20center%20builder%20backed%20by%20Nvidia%2C%20hits%20%245.5B%20valuation&btnI=1" target="_blank" class="news-card hot">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Firmus, the ‘Southgate’ AI data center builder backed by Nvidia, hits $5.5B valuation</h3>
-                <p class="news-summary">Nvidia-backed Asia AI data center provider Firmus has now raised $1.35 billion in six months....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+            <div class="news-item">
+                <div class="title">v2026.4.2</div>
+                <div class="desc">x_search 设置迁移</div>
+                <a class="link" href="https://www.google.com/search?q=OpenClaw%20v2026.4.2&btnI=1" target="_blank">查看详情 →</a>
+            </div>
 
-            <a href="https://www.google.com/search?q=Intel%20signs%20on%20to%20Elon%20Musk%E2%80%99s%20Terafab%20chips%20project&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Intel signs on to Elon Musk’s Terafab chips project</h3>
-                <p class="news-summary">Intel will join SpaceX and Tesla in an effort to build a new U.S. semiconductor factory in Texas, al...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+            <div class="news-item">
+                <div class="title">v2026.4.1</div>
+                <div class="desc">新增/tasks 任务板</div>
+                <a class="link" href="https://www.google.com/search?q=OpenClaw%20v2026.4.1&btnI=1" target="_blank">查看详情 →</a>
+            </div>
 
-            <a href="https://www.google.com/search?q=Anthropic%20debuts%20preview%20of%20powerful%20new%20AI%20model%20Mythos%20in%20new%20cybersecurity%20initiative&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Anthropic debuts preview of powerful new AI model Mythos in new cybersecurity initiative</h3>
-                <p class="news-summary">The new model will be used by a small number of high-profile companies to engage in defensive cybers...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+            <div class="news-item">
+                <div class="title">fix: escape tahoe update trap vars</div>
+                <a class="link" href="https://www.google.com/search?q=OpenClaw%20fix%20tahoe&btnI=1" target="_blank">查看详情 →</a>
+            </div>
 
-            <a href="https://www.google.com/search?q=Uber%20is%20the%20latest%20to%20be%20won%20over%20by%20Amazon%E2%80%99s%20AI%20chips&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Uber is the latest to be won over by Amazon’s AI chips</h3>
-                <p class="news-summary">Uber is expanding its AWS contract to run more of its ride-sharing features on Amazon's chips. This ...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+            <div class="news-item">
+                <div class="title">docs: 2026.4.7 changelog</div>
+                <a class="link" href="https://www.google.com/search?q=OpenClaw%202026.4.7%20changelog&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+        </section>
 
-            <a href="https://www.google.com/search?q=Anthropic%C2%A0ups%20compute%20deal%20with%20Google%20and%20Broadcom%20amid%20skyrocketing%20demand&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Anthropic ups compute deal with Google and Broadcom amid skyrocketing demand</h3>
-                <p class="news-summary">Anthropic bulked up its compute deal with Google and Broadcom as the company has seen its run-rate r...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Google%20Maps%20can%20now%20write%20captions%20for%20your%20photos%20using%20AI&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Google Maps can now write captions for your photos using AI</h3>
-                <p class="news-summary">Google is rolling out new features to make it easier for users to contribute local knowledge to Maps...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=4%C2%A0days%20left%20to%20save%20close%20to%20%24500%20on%20TechCrunch%20Disrupt%202026%20passes&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">4 days left to save close to $500 on TechCrunch Disrupt 2026 passes</h3>
-                <p class="news-summary">Four days left to save up to $482 on your TechCrunch Disrupt 2026 ticket. These low rates will disap...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=The%20AI%20gold%20rush%20is%20pulling%20private%20wealth%20into%20riskier%2C%20earlier%20bets&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">The AI gold rush is pulling private wealth into riskier, earlier bets</h3>
-                <p class="news-summary">On a recent episode of Equity, we  talked to Arena Private Wealth to explore a growing trend: family...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=AI%20startup%20Rocket%20offers%20vibe%20McKinsey-style%20reports%20at%20a%20fraction%20of%20the%20cost&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">AI startup Rocket offers vibe McKinsey-style reports at a fraction of the cost</h3>
-                <p class="news-summary">Rocket's new AI platform combines strategy, product building, and competitive intelligence, aiming t...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenAI%20alums%20have%20been%20quietly%20investing%20from%20a%20new%2C%20potentially%20%24100M%20fund&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">OpenAI alums have been quietly investing from a new, potentially $100M fund</h3>
-                <p class="news-summary">Zero Shot, a new venture capital fund with deep ties to OpenAI, is aiming to raise $100 million for ...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Google%20quietly%20launched%20an%20AI%20dictation%20app%20that%20works%20offline&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Google quietly launched an AI dictation app that works offline</h3>
-                <p class="news-summary">Google's new offline-first dictation app uses Gemma AI models to take on the apps like Wispr Flow....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Iran%20threatens%20%E2%80%98Stargate%E2%80%99%20AI%20data%20centers&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Iran threatens ‘Stargate’ AI data centers</h3>
-                <p class="news-summary">Iran said it will target U.S.-linked data centers with new missile strikes, as the war between the U...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenAI%E2%80%99s%20vision%20for%20the%20AI%20economy%3A%20public%20wealth%20funds%2C%20robot%20taxes%2C%20and%20a%20four-day%20workweek&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">OpenAI’s vision for the AI economy: public wealth funds, robot taxes, and a four-day workweek</h3>
-                <p class="news-summary">OpenAI proposes taxes on AI profits, public wealth funds, and expanded safety nets to address job lo...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Startup%20Battlefield%20200%20applications%20open%3A%20a%20chance%20for%20VC%20access%2C%20TechCrunch%20coverage%2C%20and%20%24100K&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Startup Battlefield 200 applications open: a chance for VC access, TechCrunch coverage, and $100K</h3>
-                <p class="news-summary">Nominate your startup, or one you know that deserves the spotlight, and finish the process by applyi...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=How%20to%20use%20the%20new%20ChatGPT%20app%20integrations%2C%20including%20DoorDash%2C%20Spotify%2C%20Uber%2C%20and%20others&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others</h3>
-                <p class="news-summary">Learn how to use Spotify, Canva, Figma, Expedia, and other apps directly in ChatGPT....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Ticket%20savings%20of%20up%20to%20%24500%20this%20week%20for%20TechCrunch%20Disrupt%202026&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Ticket savings of up to $500 this week for TechCrunch Disrupt 2026</h3>
-                <p class="news-summary">Starting today, you have 5 days to save nearly $500 on your ticket to TechCrunch Disrupt 2026. This ...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Spain%E2%80%99s%20Xoople%20raises%20%24130%20million%20Series%20B%20to%20map%20the%20Earth%20for%20AI&btnI=1" target="_blank" class="news-card">
-                <div class="badges">
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Spain’s Xoople raises $130 million Series B to map the Earth for AI</h3>
-                <p class="news-summary">The company is also announcing a deal with L3Harris to build the sensors for Xoople's spacecraft....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-        </div>
-
-        <h2 class="section-title"><span class="emoji">🦞</span>OpenClaw 龙虾资讯</h2>
-        <div class="news-grid">
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎨</span>设计 AI（8 条）</h2>
             
-            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.5%3A%20openclaw%202026.4.5&btnI=1" target="_blank" class="news-card hot openclaw">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
+            <div class="news-item">
+                <div class="title">《塞尔达传说：时之笛》Switch 2 重制版争议</div>
+                <div class="desc">任天堂的两难选择</div>
+                <a class="link" href="https://www.google.com/search?q=Zelda%20Ocarina%20Time%20Switch%202&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">《女神异闻录》艺术家 redesign《鬼泣》角色</div>
+                <div class="desc">Switch 新作</div>
+                <a class="link" href="https://www.google.com/search?q=Persona%20artist%20Devil%20May%20Cry%20Switch&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">漫威粉丝嘲笑《旺达幻视》新标志</div>
+                <div class="desc">"为衬线字体伸张正义"</div>
+                <a class="link" href="https://www.google.com/search?q=Marvel%20Wonder%20Man%20logo%20serifs&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">《ChainStaff》评测</div>
+                <div class="desc">80 年代风格射击游戏</div>
+                <a class="link" href="https://www.google.com/search?q=ChainStaff%20review%2080s%20shooter&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">数字绘景完整教程</div>
+                <div class="desc">电影环境/游戏概念创作</div>
+                <a class="link" href="https://www.google.com/search?q=matte%20painting%20cinematic%20environment&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">《星球大战：摩尔》动画风格</div>
+                <div class="desc">出人意料的灵感来源</div>
+                <a class="link" href="https://www.google.com/search?q=Star%20Wars%20Maul%20Shadow%20Lord%20animation&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">可口可乐视觉错觉广告</div>
+                <div class="desc">潜入"蓝色"足球场</div>
+                <a class="link" href="https://www.google.com/search?q=Coca-Cola%20optical%20illusion%20football&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="title">美国最畅销办公椅推荐</div>
+                <div class="desc">含平价替代品</div>
+                <a class="link" href="https://www.google.com/search?q=best%20selling%20office%20chairs%20US&btnI=1" target="_blank">查看详情 →</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📊</span>今日统计</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number">18</div>
+                    <div class="label">🌍 全球动态</div>
                 </div>
-                <h3 class="news-title">OpenClaw v2026.4.5: openclaw 2026.4.5</h3>
-                <p class="news-summary">### Breaking
-
-- Config: remove legacy public config aliases such as `talk.voiceId` / `talk.apiKey`, `agents.*.sandbox.perSession`, `browser.ssrfPolicy.allowPrivateNetwork`, `hooks.internal.handlers`, </p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.2%3A%20openclaw%202026.4.2&btnI=1" target="_blank" class="news-card openclaw">
-                <div class="badges">
-                    <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
+                <div class="stat-card">
+                    <div class="number">5</div>
+                    <div class="label">🦞 OpenClaw</div>
                 </div>
-                <h3 class="news-title">OpenClaw v2026.4.2: openclaw 2026.4.2</h3>
-                <p class="news-summary">
-### Breaking
-
-- Plugins/xAI: move `x_search` settings from the legacy core `tools.web.x_search.*` path to the plugin-owned `plugins.entries.xai.config.xSearch.*` path, standardize `x_search` auth on </p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.1%3A%20openclaw%202026.4.1&btnI=1" target="_blank" class="news-card openclaw">
-                <div class="badges">
-                    <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
+                <div class="stat-card">
+                    <div class="number">8</div>
+                    <div class="label">🎨 设计 AI</div>
                 </div>
-                <h3 class="news-title">OpenClaw v2026.4.1: openclaw 2026.4.1</h3>
-                <p class="news-summary">## 2026.4.1
-
-### Changes
-
-- Tasks/chat: add `/tasks` as a chat-native background task board for the current session, with recent task details and agent-local fallback counts when no linked tasks are v</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20fix%3A%20escape%20tahoe%20update%20trap%20vars&btnI=1" target="_blank" class="news-card openclaw">
-                <div class="badges">
-                    <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
+                <div class="stat-card">
+                    <div class="number">31</div>
+                    <div class="label">总计</div>
                 </div>
-                <h3 class="news-title">OpenClaw Update: fix: escape tahoe update trap vars</h3>
-                <p class="news-summary">fix: escape tahoe update trap vars</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
+            </div>
+        </section>
 
-            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20docs%3A%20stamp%202026.4.7%20changelog&btnI=1" target="_blank" class="news-card openclaw">
-                <div class="badges">
-                    <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">OpenClaw Update: docs: stamp 2026.4.7 changelog</h3>
-                <p class="news-summary">docs: stamp 2026.4.7 changelog</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-        </div>
-
-        <h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>
-        <div class="news-grid">
-            
-            <a href="https://www.google.com/search?q=A%20Zelda%3A%20Ocarina%20of%20Time%20Remake%20on%20Switch%202%20could%20be%20a%20mistake%20%E2%80%93%20here%E2%80%99s%20why&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">A Zelda: Ocarina of Time Remake on Switch 2 could be a mistake – here’s why</h3>
-                <p class="news-summary">Nintendo faces an impossible choice....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Persona%27s%20legendary%20artist%20redesigns%20Devil%20May%20Cry%27s%20%20characters%20for%20new%20Switch%20game&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Persona's legendary artist redesigns Devil May Cry's  characters for new Switch game</h3>
-                <p class="news-summary">Kazuma Kaneko’s Tsukuyomi on Switch features new designs for Dante, Nero and Vergil....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=%E2%80%9CJustice%20for%20serifs%21%E2%80%9D%3A%20Marvel%20fans%20roast%20new%20Wonder%20Man%20logo&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">“Justice for serifs!”: Marvel fans roast new Wonder Man logo</h3>
-                <p class="news-summary">There’s minimalism, then there’s just plain bland....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=ChainStaff%20review%3A%20an%20%E2%80%9880s-art-inspired%20shooter%20with%20one%20brilliant%20idea&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">ChainStaff review: an ‘80s-art-inspired shooter with one brilliant idea</h3>
-                <p class="news-summary">But that idea is the amazing ChainStaff (and a Heavy Metal magazine collection)....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=How%20to%20structure%20a%20matte%20painting%20to%20create%20a%20cinematic%20environment%2C%20game%20concept%20or%20personal%20illustration&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">How to structure a matte painting to create a cinematic environment, game concept or personal illustration</h3>
-                <p class="news-summary">Concept artist Killian Prevost shares his complete matte painting workflow, from composition to colo...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Star%20Wars%3A%20Maul%20%E2%80%93%20Shadow%20Lord%27s%20gritty%20animation%20style%20has%20a%20surprising%20inspiration&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Star Wars: Maul – Shadow Lord's gritty animation style has a surprising inspiration</h3>
-                <p class="news-summary">Disney's Star Wars animations have come a long way....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Coca-Cola%20uses%20a%20mind-bending%20optical%20illusion%20to%20sneak%20into%20%27blue%27%20football%20stadiums&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Coca-Cola uses a mind-bending optical illusion to sneak into 'blue' football stadiums</h3>
-                <p class="news-summary">Fans are seeing red, and so am I....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=The%203%20best-selling%20office%20chairs%20in%20the%20US%20%28and%20the%20budget%20dupes%20actually%20worth%20buying%29&btnI=1" target="_blank" class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">The 3 best-selling office chairs in the US (and the budget dupes actually worth buying)</h3>
-                <p class="news-summary">Read this, if you're buying a chair for your home office....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-        </div>
-                <h3 class="news-title">即梦 AI 视频生成功能上线</h3>
-                <p class="news-summary">字节跳动即梦 2.0 支持文本生成 1080p 视频，最长 15 秒，效果惊艳。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Midjourney+V7+features" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Midjourney V7 细节控制增强</h3>
-                <p class="news-summary">V7 版本新增局部重绘、角色一致性、风格锁定等专业功能。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Adobe+Firefly+3D" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Adobe Firefly 3D 生成测试</h3>
-                <p class="news-summary">Adobe 测试 3D 模型生成功能，可从文本直接创建可编辑 3D 资产。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Figma+AI+auto+layout" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Figma AI 自动布局功能</h3>
-                <p class="news-summary">Figma AI 可根据内容自动调整布局，大幅提升设计效率。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Canva+Magic+Edit+2.0" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Canva 魔法编辑 2.0</h3>
-                <p class="news-summary">Canva 升级魔法编辑工具，支持更精准的局部修改和对象替换。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Leonardo+AI+game+assets" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Leonardo AI 游戏资产工具</h3>
-                <p class="news-summary">Leonardo 推出游戏资产专用模型，支持角色、场景、道具一键生成。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Clipdrop+background+removal" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Clipdrop 背景移除升级</h3>
-                <p class="news-summary">Stability AI 的 Clipdrop 工具背景移除精度提升至 99%。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=哩布哩布+SDXL+模型" target="_blank"  class="news-card design">
-                <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">哩布哩布 SDXL 模型库扩展</h3>
-                <p class="news-summary">LiblibAI 新增 500+ SDXL 微调模型，覆盖多种艺术风格。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-        </div>
+        <footer class="footer">
+            <p>
+                <a href="https://feishu.cn/docx/J3Jyd4jTao3kqOx9CxFcdhPynyb" target="_blank">📄 飞书文档</a> |
+                <a href="https://github.com/TTONG-WANG-1/ai-daily-news" target="_blank">🐙 GitHub 仓库</a>
+            </p>
+            <p style="color: #6b6b7b; font-size: 12px; margin-top: 16px;">明日 9:30 AM 见！☕</p>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <p>📊 今日统计：全球动态 20 条 | 🦞 OpenClaw 5 条 | 设计 AI 8 条</p>
-        <p>🔗 <a href="https://ttong-wang-1.github.io/ai-daily-news/" target="_blank" >GitHub Pages</a> | <a href="https://feishu.cn/docx/K8FhdF2tTo9UtRxNVoOcO2q2ndf" target="_blank" >飞书文档</a></p>
-        <p style="margin-top: 16px; color: var(--text-tertiary);">© 2026 AI Daily News. Generated automatically.</p>
-    </footer>
 </body>
 </html>

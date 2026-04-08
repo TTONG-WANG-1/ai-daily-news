@@ -178,55 +178,231 @@ def fetch_openclaw_news(max_items=5):
     
     return items[:max_items]
 
-def is_recent(published_str, days=1):
-    """Check if news is recent (within specified days, default=1 for today/yesterday only)"""
-    if not published_str:
-        return False  # No date = assume OLD (conservative)
-    try:
-        for fmt in ['%a, %d %b %Y %H:%M:%S', '%Y-%m-%dT%H:%M:%S', '%Y-%m-%d']:
-            try:
-                pub_date = datetime.strptime(published_str.split('+')[0].split('Z')[0].strip(), fmt)
-                age_hours = (datetime.now() - pub_date).total_seconds() / 3600
-                age_days = (datetime.now() - pub_date).days
-                # 严格筛选：不超过 days 天（24*days 小时）
-                return age_days <= days
-            except:
-                continue
+def generate_feishu_content(global_news, design_news, openclaw_news, product_news, dates):
+    """Generate Feishu document content and push message from news data"""
+    
+    # Build highlights (top 4 from global news)
+    highlights = []
+    for i, item in enumerate(global_news[:4]):
+        title = item.get('title_cn', item.get('title', ''))
+        if title:
+            # Clean up title
+            title = re.sub(r'^\*\*🔥 \*\*', '', title)
+            title = re.sub(r'\*\*$', '', title)
+            highlights.append(f"- {title}")
+    
+    # Generate Feishu markdown content
+    md_lines = [
+        f"# AI 前沿资讯日报 - {dates['cn']} {dates['weekday']}",
+        "",
+        "---",
+        ""
+    ]
+    
+    # Product section
+    if product_news:
+        md_lines.extend(["## 📢 产品动态", ""])
+        for item in product_news[:3]:
+            title = item.get('title_cn', item.get('title', ''))
+            summary = item.get('summary_cn', item.get('summary', ''))[:80]
+            link = item.get('link', '')
+            google_link = f"https://www.google.com/search?q={urllib.parse.quote(title)}&btnI=1"
+            md_lines.append(f"**🔥 {title}**")
+            md_lines.append(f"{summary}")
+            md_lines.append(f"{google_link}")
+            md_lines.append("")
+        md_lines.extend(["", "---", ""])
+    
+    # Global section
+    md_lines.extend(["## 🌍 全球动态", ""])
+    for i, item in enumerate(global_news):
+        title = item.get('title_cn', item.get('title', ''))
+        summary = item.get('summary_cn', item.get('summary', ''))[:80]
+        link = item.get('link', '')
+        google_link = f"https://www.google.com/search?q={urllib.parse.quote(title)}&btnI=1"
+        hot_badge = "🔥 " if i < 2 else ""
+        md_lines.append(f"**{hot_badge}{title}**")
+        md_lines.append(f"{summary}")
+        md_lines.append(f"{google_link}")
+        md_lines.append("")
+    
+    # OpenClaw section
+    md_lines.extend(["", "## 🦞 OpenClaw 龙虾资讯", ""])
+    for i, item in enumerate(openclaw_news):
+        title = item.get('title', '')
+        summary = item.get('summary', '')[:80]
+        link = item.get('link', '')
+        google_link = f"https://www.google.com/search?q={urllib.parse.quote(title)}&btnI=1"
+        hot_badge = "🔥 " if i == 0 else ""
+        md_lines.append(f"**{hot_badge}{title}**")
+        md_lines.append(f"{summary}")
+        md_lines.append(f"{google_link}")
+        md_lines.append("")
+    
+    # Design section
+    md_lines.extend(["", "## 🎨 设计 AI", ""])
+    for item in design_news:
+        title = item.get('title_cn', item.get('title', ''))
+        summary = item.get('summary_cn', item.get('summary', ''))[:80]
+        link = item.get('link', '')
+        google_link = f"https://www.google.com/search?q={urllib.parse.quote(title)}&btnI=1"
+        md_lines.append(f"**{title}**")
+        md_lines.append(f"{summary}")
+        md_lines.append(f"{google_link}")
+        md_lines.append("")
+    
+    # Stats footer
+    md_lines.extend([
+        "",
+        "---",
+        "",
+        f"📊 今日统计：全球动态 {len(global_news)} 条 | 🦞 OpenClaw {len(openclaw_news)} 条 | 设计 AI {len(design_news)} 条 | 产品动态 {len(product_news)} 条",
+        "",
+        f"🔗 GitHub Pages: https://ttong-wang-1.github.io/ai-daily-news/"
+    ])
+    
+    markdown_content = "\n".join(md_lines)
+    
+    # Generate push message
+    push_message = f"""## 📰 AI 前沿资讯日报 - {dates['cn']} {dates['weekday']}
+
+**今日新闻**:
+- 🌍 全球 AI 动态：{len(global_news)} 条
+- 🎨 设计 AI 资讯：{len(design_news)} 条
+- 🦞 OpenClaw：{len(openclaw_news)} 条
+- 📢 产品动态：{len(product_news)} 条
+
+**热门亮点**:
+{chr(10).join(highlights[:4])}
+
+**查看方式**:
+- 🌐 GitHub Pages: https://ttong-wang-1.github.io/ai-daily-news/
+- 📄 飞书文档：{{feishu_doc_url}}
+
+祝你{dates['weekday'][:2]}愉快！☕"""
+    
+    return {
+        'markdown': markdown_content,
+        'message': push_message,
+        'highlights': highlights
+    }
+
+def extract_date_from_text(text):
+    """Extract date from text content (summary/title) - prioritize title dates"""
+    if not text:
+        return None
+    
+    # Common date patterns - order matters, try most specific first
+    patterns = [
+        (r'(\d{4})[-/](\d{1,2})[-/](\d{1,2})', 3),  # 2026-04-03 (full date)
+        (r'(\d{4}) 年 (\d{1,2}) 月 (\d{1,2}) 日', 3),  # 2026 年 04 月 03 日
+        (r'(\d{4})[-/](\d{1,2})', 2),  # 2026-04 (year-month only, skip)
+    ]
+    
+    for pattern, min_groups in patterns:
+        match = re.search(pattern, text[:200])  # Only check first 200 chars (title area)
+        if match:
+            groups = match.groups()
+            if len(groups) >= min_groups:
+                try:
+                    year = int(groups[0])
+                    month = int(groups[1])
+                    day = int(groups[2]) if len(groups) > 2 else 1
+                    if year < 100:  # Assume 20xx for 2-digit years
+                        year += 2000
+                    # Sanity check: don't return dates before 2020 or in the future
+                    if 2020 <= year <= 2030 and 1 <= month <= 12 and 1 <= day <= 31:
+                        return datetime(year, month, day)
+                except:
+                    continue
+    return None
+
+def has_today_date(title_text, today_iso, today_cn):
+    """Check if title contains today's date (strict check)"""
+    if not title_text:
         return False
-    except:
+    # Check for various date formats
+    return (today_iso in title_text or  # 2026-04-03
+            today_cn in title_text or   # 2026 年 04 月 03 日
+            f"{today_iso.replace('-', '/')}" in title_text)  # 2026/04/03
+
+def is_recent(published_str, days=1, summary_text=None, title_text=None, require_today=False):
+    """Check if news is recent (within specified days, default=1 for today only)
+    
+    Args:
+        published_str: Published date string from RSS/API
+        days: Maximum age in days (default=1)
+        summary_text: Summary text to extract date from if published_str is missing
+        title_text: Title text to extract date from (higher priority than summary)
+        require_today: If True, MUST have today's date in title
+    """
+    today = datetime.now()
+    today_iso = today.strftime('%Y-%m-%d')
+    today_cn = today.strftime('%Y 年%m 月%d 日')
+    
+    # If require_today, check title first
+    if require_today and title_text:
+        if has_today_date(title_text, today_iso, today_cn):
+            return True
+        # Don't fallback - require today's date
         return False
+    
+    # Try parsing published date first
+    if published_str:
+        try:
+            for fmt in ['%a, %d %b %Y %H:%M:%S', '%Y-%m-%dT%H:%M:%S', '%Y-%m-%d', '%Y-%m-%d %H:%M:%S']:
+                try:
+                    pub_date = datetime.strptime(published_str.split('+')[0].split('Z')[0].strip(), fmt)
+                    age_days = (today - pub_date).days
+                    if age_days <= days:
+                        return True
+                    # Date too old
+                    return False
+                except:
+                    continue
+        except:
+            pass
+    
+    # Try extracting date from title first (higher priority)
+    if title_text:
+        extracted_date = extract_date_from_text(title_text)
+        if extracted_date:
+            age_days = (today - extracted_date).days
+            if age_days <= days:
+                return True
+            return False
+    
+    # Try extracting date from summary text
+    if summary_text:
+        extracted_date = extract_date_from_text(summary_text)
+        if extracted_date:
+            age_days = (today - extracted_date).days
+            if age_days <= days:
+                return True
+            return False
+    
+    # No date found = assume OLD (conservative)
+    return False
 
 def translate_text(text, target_lang='en|zh'):
-    """Translate single text using MyMemory API (free, no auth)"""
+    """Translate text - skip for now, use Chinese sources directly"""
     if not text or len(text) < 3:
         return text
     
-    try:
-        encoded = urllib.parse.quote(text[:450])  # API limit: 500 chars
-        url = f"https://api.mymemory.translated.net/get?q={encoded}&langpair={target_lang}"
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        
-        with urllib.request.urlopen(req, timeout=8) as response:
-            result = json.loads(response.read().decode('utf-8'))
-        
-        if 'responseData' in result and 'translatedText' in result['responseData']:
-            return result['responseData']['translatedText']
+    # If text is already Chinese, return as-is
+    if any('\u4e00' <= c <= '\u9fff' for c in text[:50]):
         return text
-    except Exception as e:
-        return text
+    
+    # For English text, return as-is (will be handled by searching Chinese sources)
+    return text
 
 def translate_batch(texts, target_lang='en|zh'):
-    """Translate multiple texts"""
+    """Translate multiple texts - pass-through for now"""
     if not texts:
         return []
     
-    translations = []
-    for i, text in enumerate(texts):
-        if i % 5 == 0:
-            print(f"    Translating {i+1}/{len(texts)}...")
-        translations.append(translate_text(text, target_lang))
-    
-    return translations
+    # Return texts as-is (we search Chinese sources directly now)
+    return texts
 
 def make_card(item, is_hot=False, is_design=False, is_openclaw=False, is_product=False):
     badges = []
@@ -277,10 +453,48 @@ def main():
     
     state = load_state()
     
-    # Fetch news
+    # Fetch news - Tavily first for latest news
     print("\n🌐 Fetching news...")
     
     all_news = []
+    
+    # Tavily search for TODAY's AI news - ONLY from trusted news sources
+    print("  - Tavily: AI news today (trusted sources only)...")
+    today = dates['iso']
+    today_dt = datetime.strptime(today, '%Y-%m-%d')
+    # Search ONLY from trusted news sources with explicit date in query
+    cn_queries = [
+        f"site:thepaper.cn AI 人工智能 {today}",
+        f"site:xinhuanet.com AI {today}",
+        f"site:chinanews.com AI 科技 {today}",
+        f"site:21jingji.com AI {today}",
+        f"site:jiemian.com AI 大模型 {today}",
+    ]
+    tavily_items = []
+    for query in cn_queries:
+        results = search_with_tavily(query, max_results=5)
+        for item in results:
+            item['source'] = 'trusted_news'
+        tavily_items.extend(results)
+    
+    # Deduplicate AND strict date check - ONLY keep news with TODAY's date
+    seen = set()
+    unique_tavily = []
+    for item in tavily_items:
+        if item['title'] in seen:
+            continue
+        # VERY strict: title MUST contain today's date
+        title_has_date = today in item.get('title', '') or dates['cn'] in item.get('title', '')
+        if not title_has_date:
+            print(f"    ⚠️  Skip (no date in title): {item['title'][:50]}")
+            continue
+        seen.add(item['title'])
+        unique_tavily.append(item)
+    
+    all_news.extend(unique_tavily[:15])
+    print(f"    ✅ {len(unique_tavily[:15])} items from Tavily (trusted, today's date)")
+    
+    # RSS feeds as supplementary
     for name, url in RSS_FEEDS.items():
         print(f"  - {name}...")
         items, error = fetch_feed(url, max_items=30)
@@ -291,6 +505,8 @@ def main():
             recent = [i for i in items if is_recent(i['published'], days=1)]
             old_count = len(items) - len(recent)
             print(f"    ✅ {len(recent)} recent, ⚠️ {old_count} old (filtered)")
+            for item in recent:
+                item['source'] = name
             all_news.extend(recent)
     
     design_news = []
@@ -316,24 +532,34 @@ def main():
     product_news = []
     
     if HAS_TAVILY:
-        # Tavily search queries for product announcements
+        # Tavily search queries for product announcements - use TODAY's date for real-time news
+        today = datetime.now().strftime('%Y-%m-%d')
         product_queries = [
-            ("飞书 Aily 预约 2026", "feishu_aily"),
-            ("Xiaomi MiMo Agent 框架", "xiaomi_mimo"),
-            ("OpenAI new feature 2026", "openai"),
-            ("Anthropic Claude update", "anthropic"),
-            ("Midjourney update 2026", "midjourney"),
+            (f"AI 产品发布 {today} 今日最新", "ai_product_cn"),
+            (f"大模型更新 {today} 字节阿里腾讯百度", "china_ai"),
+            (f"AI 工具新品 {today}", "ai_tools"),
+            (f"OpenAI Anthropic Google AI {today}", "us_ai"),
+            (f"Midjourney Stable Diffusion AI 绘画 {today}", "ai_art"),
+            (f"飞书钉钉企业微信 AI {today}", "enterprise_ai"),
         ]
         
         for query, tag in product_queries:
             print(f"    🔍 {query[:40]}...")
             results = search_with_tavily(query, max_results=5)
             if results:
-                print(f"      ✅ {len(results)} results (score: {results[0]['score']:.3f})")
+                # Filter by date
+                recent_results = []
                 for item in results:
-                    item['is_product'] = True
-                    item['source_tag'] = tag
-                product_news.extend(results[:3])  # Top 3 per query
+                    if is_recent(item.get('published', ''), days=2, summary_text=item.get('summary', ''), title_text=item.get('title', '')):
+                        recent_results.append(item)
+                    else:
+                        print(f"      ⚠️  Skip old: {item['title'][:40]}")
+                if recent_results:
+                    print(f"      ✅ {len(recent_results)} recent (score: {recent_results[0]['score']:.3f})")
+                    for item in recent_results:
+                        item['is_product'] = True
+                        item['source_tag'] = tag
+                    product_news.extend(recent_results[:2])  # Top 2 per query
     else:
         # Fallback to RSS feeds
         print("    ⚠️  Tavily unavailable, using RSS fallback...")
@@ -349,19 +575,53 @@ def main():
                         item['is_product'] = True
                     product_news.extend(recent)
     
-    # 如果全球新闻太少，用 Tavily 补充
-    if len(all_news) < 10 and HAS_TAVILY:
-        print("\n  ⚠️  Global news too few, supplementing with Tavily...")
+    # 如果全球新闻太少，用 Tavily 补充（搜索中文）
+    if len(all_news) < 15 and HAS_TAVILY:
+        print("\n  ⚠️  Global news too few, supplementing with Tavily (Chinese)...")
+        today = datetime.now().strftime('%Y-%m-%d')
         tavily_queries = [
-            f"AI news {datetime.now().strftime('%Y-%m-%d')} artificial intelligence",
-            f"AI startup funding {datetime.now().strftime('%Y-%m-%d')}",
+            f"AI 人工智能 {today} 最新消息",
+            f"AI 创业融资 {today}",
+            f"OpenAI Google AI 更新 {today}",
         ]
         for query in tavily_queries:
             print(f"    🔍 {query[:50]}...")
-            results = search_with_tavily(query, max_results=10)
+            results = search_with_tavily(query, max_results=8)
+            # Filter by date
             for item in results:
-                item['is_global'] = True
-            all_news.extend(results[:5])
+                if is_recent(item.get('published', ''), days=2, summary_text=item.get('summary', ''), title_text=item.get('title', '')):
+                    item['is_global'] = True
+                    all_news.append(item)
+                else:
+                    print(f"      ⚠️  Skip old: {item['title'][:40]}")
+    
+    # 中国大厂 AI 资讯 (Tavily 搜索)
+    if HAS_TAVILY:
+        print("\n🇨🇳 Fetching China tech AI news...")
+        china_queries = [
+            f"字节跳动 飞书 Aily AI 更新 {datetime.now().strftime('%Y-%m-%d')}",
+            f"阿里巴巴 通义千问 Qwen 更新 {datetime.now().strftime('%Y-%m-%d')}",
+            f"腾讯 混元 AI 模型 {datetime.now().strftime('%Y-%m-%d')}",
+            f"百度 文心一言 ERNIE Bot {datetime.now().strftime('%Y-%m-%d')}",
+            f"小米 MiMo AI 大模型 {datetime.now().strftime('%Y-%m-%d')}",
+            f"即梦 AI 视频生成 更新 {datetime.now().strftime('%Y-%m-%d')}",
+            f"豆包 AI 助手 字节跳动 {datetime.now().strftime('%Y-%m-%d')}",
+        ]
+        for query in china_queries:
+            print(f"    🔍 {query[:50]}...")
+            results = search_with_tavily(query, max_results=5)
+            # Filter by date
+            recent_count = 0
+            for item in results:
+                if is_recent(item.get('published', ''), days=2, summary_text=item.get('summary', ''), title_text=item.get('title', '')):
+                    item['is_global'] = True
+                    item['is_china_tech'] = True
+                    all_news.append(item)
+                    recent_count += 1
+                else:
+                    print(f"      ⚠️  Skip old: {item['title'][:40]}")
+            if recent_count > 0:
+                print(f"      ✅ {recent_count} recent")
     
     # Deduplicate
     seen = set()
@@ -408,6 +668,9 @@ def main():
     for i, item in enumerate(unique_news[:20]):
         item['title_cn'] = title_translations[i] if i < len(title_translations) else item['title']
         item['summary_cn'] = summary_translations[i] + '...' if i < len(summary_translations) else item['summary']
+        # Debug: print if translation failed
+        if item['title_cn'] == item['title'] and len(item['title']) > 10:
+            print(f"    ⚠️  Title not translated: {item['title'][:50]}")
     
     # Design news translations
     design_titles = [item['title'] for item in unique_design[:8]]
@@ -470,29 +733,37 @@ def main():
     content = re.sub(r'<p class="hero-date">[^<]+</p>',
                      f'<p class="hero-date">{dates["cn"]} {dates["weekday"]}</p>', content)
     
-    # Insert product news
+    # Build complete sections
+    global_section = f'''<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>
+        <div class="news-grid">
+            {global_html}
+        </div>
+
+        <h2 class="section-title"><span class="emoji">🦞</span>OpenClaw 龙虾资讯</h2>
+        <div class="news-grid">
+            {openclaw_html}
+        </div>'''
+    
+    design_section = f'''<h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>
+        <div class="news-grid">
+            {design_html}
+        </div>'''
+    
+    product_section = f'''<h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>
+        <div class="news-grid" id="product-news">
+            {product_html}
+        </div>'''
+    
+    # Replace entire sections
     content = re.sub(
-        r'(<h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>\s*<div class="news-grid" id="product-news">).*?(</div>\s*<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>)',
-        r'\1' + product_html + '\n        ' + r'\2',
+        r'<h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>\s*<div class="news-grid" id="product-news">.*?</div>',
+        product_section,
         content, flags=re.DOTALL
     )
     
     content = re.sub(
-        r'(<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>\s*<div class="news-grid">).*?(</div>\s*<h2 class="section-title"><span class="emoji">🦞</span>openclaw 龙虾资讯</h2>)',
-        r'\1' + global_html + '\n        ' + r'\2',
-        content, flags=re.DOTALL
-    )
-    
-    content = re.sub(
-        r'(<h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>\s*<div class="news-grid">).*?(</div>\s*</div>\s*<footer)',
-        r'\1' + design_html + '\n        ' + r'\2',
-        content, flags=re.DOTALL
-    )
-    
-    # Insert OpenClaw section before Design AI
-    content = re.sub(
-        r'(<h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>)',
-        r'    <h2 class="section-title"><span class="emoji">🦞</span>openclaw 龙虾资讯</h2>\n        <div class="news-grid">\n' + openclaw_html + '\n        </div>\n\n        \1',
+        r'<h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>\s*<div class="news-grid">.*?</div>\s*<h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>\s*<div class="news-grid">.*?</div>',
+        global_section + '\n\n        ' + design_section,
         content, flags=re.DOTALL
     )
     
@@ -515,8 +786,36 @@ def main():
     state['lastPushDate'] = dates['iso']
     state['lastPushTime'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S+08:00')
     state['pushCount'] = state.get('pushCount', 0) + 1
+    
+    # Generate Feishu doc content and push message
+    feishu_content = generate_feishu_content(unique_news[:20], unique_design[:8], openclaw_news[:5], unique_product[:8], dates)
+    state['feishuDocContent'] = feishu_content['markdown']
+    state['pushMessage'] = feishu_content['message']
+    state['newsStats'] = {
+        'global': len(unique_news[:20]),
+        'design': len(unique_design[:8]),
+        'openclaw': len(openclaw_news[:5]),
+        'product': len(unique_product[:8])
+    }
+    state['highlights'] = feishu_content['highlights']
+    
     save_state(state)
     
+    # Export delivery payload for OpenClaw to push
+    payload = {
+        'feishuDocTitle': f"AI 前沿资讯日报 - {dates['cn']} {dates['weekday']}",
+        'feishuDocContent': feishu_content['markdown'],
+        'pushMessage': feishu_content['message'],
+        'githubPagesUrl': 'https://ttong-wang-1.github.io/ai-daily-news/',
+        'date': dates['iso'],
+        'stats': state['newsStats']
+    }
+    
+    payload_file = AI_NEWS_DIR / 'delivery-payload.json'
+    with open(payload_file, 'w', encoding='utf-8') as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    
+    print(f"\n✅ Delivery payload exported to {payload_file}")
     print(f"\n✅ Done!")
     return True
 

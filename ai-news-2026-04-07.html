@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 前沿资讯日报 - 2026 年 4 月 7 日</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #0071e3;
+            --hot: #ff6b35;
+            --design: #bf5af2;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "微软雅黑", sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 21px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        .section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .news-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .news-card {
+            background: var(--bg-secondary);
+            border-radius: 18px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .news-card:nth-child(1) { animation-delay: 0.05s; }
+        .news-card:nth-child(2) { animation-delay: 0.1s; }
+        .news-card:nth-child(3) { animation-delay: 0.15s; }
+        .news-card:nth-child(4) { animation-delay: 0.2s; }
+        .news-card:nth-child(5) { animation-delay: 0.25s; }
+        .news-card:nth-child(6) { animation-delay: 0.3s; }
+        .news-card:nth-child(7) { animation-delay: 0.35s; }
+        .news-card:nth-child(8) { animation-delay: 0.4s; }
+        .news-card:nth-child(9) { animation-delay: 0.45s; }
+        .news-card:nth-child(10) { animation-delay: 0.5s; }
+        .news-card:nth-child(11) { animation-delay: 0.55s; }
+        .news-card:nth-child(12) { animation-delay: 0.6s; }
+        .news-card:nth-child(13) { animation-delay: 0.65s; }
+        .news-card:nth-child(14) { animation-delay: 0.7s; }
+        .news-card:nth-child(15) { animation-delay: 0.75s; }
+        .news-card:nth-child(16) { animation-delay: 0.8s; }
+        .news-card:nth-child(17) { animation-delay: 0.85s; }
+        .news-card:nth-child(18) { animation-delay: 0.9s; }
+        .news-card:nth-child(19) { animation-delay: 0.95s; }
+        .news-card:nth-child(20) { animation-delay: 1.0s; }
+        
+        .news-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .news-card.hot {
+            border-left: 4px solid var(--hot);
+        }
+        
+        .news-card.design {
+            border-left: 4px solid var(--design);
+        }
+        
+        .news-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .tag-hot {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--hot);
+        }
+        
+        .tag-design {
+            background: rgba(191, 90, 242, 0.1);
+            color: var(--design);
+        }
+        
+        .tag-global {
+            background: rgba(0, 113, 227, 0.1);
+            color: var(--accent);
+        }
+        
+        .news-title {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .news-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .news-link:hover {
+            gap: 10px;
+        }
+        
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid #e5e5e5;
+            margin-top: 40px;
+        }
+        
+        .share-section {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .share-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .share-btn:hover {
+            background: #005bb5;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">🦞 AI 前沿资讯日报</div>
+            <div class="date">2026 年 4 月 7 日 星期二</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 全球 AI 动态 -->
+        <section class="section">
+            <h2 class="section-title">🌍 全球 AI 动态 <span style="font-size: 24px; color: var(--text-secondary); font-weight: 400;">(20 条)</span></h2>
+            <div class="news-grid">
+                
+                <article class="news-card hot">
+                    <span class="news-tag tag-hot">🔥 热门</span>
+                    <h3 class="news-title">Anthropic 与 Google、Broadcom 签署重大 AI 基础设施协议</h3>
+                    <p class="news-desc">Anthropic 宣布与 Google 和 Broadcom 达成合作，将获得"数吉瓦级下一代 TPU 容量"，预计从 2027 年开始上线，为前沿 Claude 模型提供算力。公司还表示其年度收入已超过 300 亿美元。</p>
+                    <a href="https://www.google.com/search?q=Anthropic+Google+Broadcom+AI+infrastructure+deal+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 2 小时前</span>
+                        <span>📰 The Verge</span>
+                    </div>
+                </article>
+
+                <article class="news-card hot">
+                    <span class="news-tag tag-hot">🔥 热门</span>
+                    <h3 class="news-title">《纽约客》长篇报道：Sam Altman"不受真相约束"</h3>
+                    <p class="news-desc">《纽约客》发布关于 OpenAI CEO Sam Altman 的深度报道，基于笔记、备忘录和 100 多次采访，探讨其权力意志、取悦他人倾向和所谓的欺骗模式。报道指出越来越多人质疑的不是计算机是否智能，而是 OpenAI 领导层是否诚信。</p>
+                    <a href="https://www.google.com/search?q=Sam+Altman+New+Yorker+profile+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 1 天前</span>
+                        <span>📰 The Verge</span>
+                    </div>
+                </article>
+
+                <article class="news-card hot">
+                    <span class="news-tag tag-hot">🔥 热门</span>
+                    <h3 class="news-title">Meta 暂停与 Mercor 合作，AI 训练数据公司遭遇安全漏洞</h3>
+                    <p class="news-desc">AI 训练数据公司 Mercor 遭遇安全漏洞，Meta 已暂停与其合作，OpenAI 正在调查此安全事件。该事件可能导致 AI 行业机密信息泄露。</p>
+                    <a href="https://www.google.com/search?q=Mercor+data+breach+Meta+OpenAI+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 4 天前</span>
+                        <span>📰 Wired</span>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-tag tag-global">全球</span>
+                    <h3 class="news-title">Google 推出免费离线 AI 听写应用 Eloquent</h3>
+                    <p class="news-desc">Google AI Edge Eloquent 是一款新的实时 AI 转录应用，无需订阅且无使用限制。说完话后会自动过滤"嗯"等填充词。目前仅限 iOS，Google 计划将该应用扩展到 Android 和 macOS。</p>
+                    <a href="https://www.google.com/search?q=Google+AI+Edge+Eloquent+dictation+app+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 2 小时前</span>
+                        <span>📰 The Verge</span>
+                    </div>
+                </article>
+
+                <article class="news-card hot">
+                    <span class="news-tag tag-hot">🔥 热门</span>
+                    <h3 class="news-title">Cursor 推出新 AI 代理体验，挑战 Claude Code 和 Codex</h3>
+                    <p class="news-desc">Cursor 发布了新的 AI 代理体验，旨在与 Anthropic 的 Claude Code 和 OpenAI 的 Codex 竞争，为开发者提供更强大的 AI 编程辅助功能。</p>
+                    <a href="https://www.google.com/search?q=Cursor+AI+agent+experience+Claude+Code+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 1 天前</span>
+                        <span>📰 Wired</span>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-tag tag-global">全球</span>
+                    <h3 class="news-title">Google Gemma 4 开源 AI 模型采用 Apache 2.0 许可</h3>
+                    <p class="news-desc">Google 新的 Gemma 4 开源 AI 模型采用更宽松的 Apache 2.0 许可，取代了之前被批评为过于限制性的自定义许可。新模型还提供性能改进。</p>
+                    <a href="https://www.google.com/search?q=Google+Gemma+4+open+source+Apache+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 5 天前</span>
+                        <span>📰 The Verge</span>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-tag tag-global">全球</span>
+                    <h3 class="news-title">企鹅兰登书屋在慕尼黑起诉 OpenAI 侵犯版权</h3>
+                    <p class="news-desc">企鹅兰登书屋上周在慕尼黑提起诉讼，指控 OpenAI 侵犯版权法，称 ChatGPT 复制了流行的德国儿童书籍系列《椰子龙》。当被要求"写一本椰子龙在火星上的儿童书"时，ChatGPT 生成的文本和图像与原作"几乎无法区分"。</p>
+                    <a href="https://www.google.com/search?q=Penguin+Random+House+sues+OpenAI+copyright+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 6 天前</span>
+                        <span>📰 The Verge</span>
+                    </div>
+                </article>
+
+                <article class="news-card hot">
+                    <span class="news-tag tag-hot">🔥 热门</span>
+                    <h3 class="news-title">黑客泄露 Claude Code 代码并附带恶意软件</h3>
+                    <p class="news-desc">安全研究人员发现黑客正在传播泄露的 Claude Code 代码，并在其中植入额外恶意软件。Wired 报道了这一安全事件，提醒开发者注意验证代码来源。</p>
+                    <a href="https://www.google.com/search?q=Claude+Code+leak+malware+hackers+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 1 天前</span>
+                        <span>📰 Wired</span>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-tag tag-global">全球</span>
+                    <h3 class="news-title">Anthropic 称 Claude 包含自己的"情感"</h3>
+                    <p class="news-desc">Anthropic 研究人员发表新论文，探讨 Claude 模型在特定情况下表现出的类情感行为，引发 AI 意识讨论。</p>
+                    <a href="https://www.google.com/search?q=Anthropic+Claude+emotions+AI+2026&btnI=1" class="news-link" target="_blank">查看详情 →</a>
+                    <div class="news-meta">
+                        <span>⏰ 2 天前</span>
+                        <span>📰 Wired</span>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-tag tag-global">全球</span>
+                    <h3 class="news-title">Perplexity 被控与 Meta、Google 共享用户对话</h3>
+                    <p class="news-desc">集体诉讼指控 Perplexity 在 AI 搜索引擎中嵌入 Meta 和 Google 追踪器，即使用户开启"隐身模式"，对话、邮箱地址和其他标识符仍被共享。</p>
