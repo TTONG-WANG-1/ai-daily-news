@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 前沿资讯日报 - 2026 年 04 月 11 日</title>
+    <title>AI 前沿资讯日报 - 2026 年 04 月 02 日</title>
     
     <!-- Apple System Fonts -->
     <style>
@@ -148,16 +148,10 @@
             margin-bottom: 20px;
         }
 
-        .hero p {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 16px;
-        }
-
         .hero-date {
-            font-size: 15px;
-            color: var(--text-tertiary);
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
 
         .container {
@@ -169,38 +163,37 @@
         }
 
         .section-title {
-            font-size: clamp(28px, 5vw, 42px);
+            font-size: 28px;
             font-weight: 600;
             margin: 60px 0 32px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .section-title .emoji {
-            font-size: 1.2em;
+            font-size: 32px;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
         }
 
         .news-card {
-            position: relative;
-            background: var(--bg-glass);
-            backdrop-filter: saturate(180%) blur(20px);
+            background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 28px;
+            padding: 24px;
             text-decoration: none;
-            color: var(--text-primary);
+            color: inherit;
             transition: all var(--transition-base);
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
         }
 
         .news-card::before {
@@ -254,54 +247,45 @@
 
         .badges {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
-        }
-
-        .source-badge {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-tertiary);
-            padding: 4px 10px;
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border-subtle);
+            gap: 8px;
         }
 
         .hot-badge {
             font-size: 12px;
             font-weight: 600;
-            color: #fff;
             padding: 4px 10px;
             background: var(--hot-gradient);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-sm);
+            color: white;
         }
 
         .design-badge {
             font-size: 12px;
             font-weight: 600;
-            color: #fff;
             padding: 4px 10px;
             background: var(--design-gradient);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-sm);
+            color: white;
         }
 
         .openclaw-badge {
             font-size: 12px;
             font-weight: 600;
-            color: #fff;
             padding: 4px 10px;
             background: var(--openclaw-gradient);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-sm);
+            color: white;
         }
 
-        .product-badge {
+        .source-badge {
             font-size: 12px;
-            font-weight: 600;
-            color: #fff;
+            font-weight: 500;
             padding: 4px 10px;
-            background: var(--product-gradient);
-            border-radius: var(--radius-xl);
+            background: var(--bg-glass);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
         }
 
         .news-title {
@@ -321,361 +305,329 @@
             color: var(--text-secondary);
             line-height: 1.6;
             flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .news-link {
             font-size: 13px;
             font-weight: 500;
             color: var(--accent-primary);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all var(--transition-fast);
+            margin-top: auto;
         }
 
-        .news-card:hover .news-link {
-            gap: 10px;
-        }
-
-        .footer {
+        footer {
             text-align: center;
-            padding: 60px 32px;
+            padding: 40px 32px;
             border-top: 1px solid var(--border-subtle);
             color: var(--text-tertiary);
             font-size: 14px;
         }
 
-        .footer a {
+        footer a {
             color: var(--accent-primary);
             text-decoration: none;
         }
-
-        @media (max-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                padding: 0 16px;
-            }
-            
-            .container {
-                padding: 0 16px 60px;
-            }
-            
-            .news-card {
-                padding: 24px;
-            }
-        }
     </style>
-    <script>
-        // Ensure click works on mobile devices
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.news-card');
-            cards.forEach(function(card) {
-                card.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href) {
-                        window.open(href, '_blank', 'noopener,noreferrer');
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="bg-gradient"></div>
     
     <header class="header">
         <div class="header-content">
-            <a href="/" class="logo">🤖 AI Daily News</a>
-            <span class="date-badge">2026.04.11</span>
+            <a href="#" class="logo">🦞 AI Daily News</a>
+            <span class="date-badge">2026 年 04 月 02 日</span>
         </div>
     </header>
 
     <section class="hero">
         <h1>AI 前沿资讯日报</h1>
-        <p>每日精选全球 AI 领域最新动态</p>
-        <p class="hero-date">2026 年 04 月 11 日 星期六</p>
+        <p class="hero-date">2026 年 04 月 02 日 星期四</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title"><span class="emoji">📢</span>产品动态</h2>
-        <div class="news-grid" id="product-news">
-            
-        </div>
-
         <h2 class="section-title"><span class="emoji">🌍</span>全球动态</h2>
         <div class="news-grid">
-            
-            <a href="https://www.google.com/search?q=Anthropic%20temporarily%20banned%20OpenClaw%E2%80%99s%20creator%20from%20accessing%20Claude&btnI=1" target="_blank" class="news-card hot">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Anthropic temporarily banned OpenClaw’s creator from accessing Claude</h3>
-                <p class="news-summary">This ban took place after Claude's pricing changed for OpenClaw users last week....</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Stalking%20victim%20sues%20OpenAI%2C%20claims%20ChatGPT%20fueled%20her%20abuser%E2%80%99s%20delusions%20and%20ignored%20her%20warnings&btnI=1" target="_blank" class="news-card hot">
-                <div class="badges">
-                    <span class="hot-badge">🔥 热门</span><span class="source-badge">🔍 Google 直达</span>
-                </div>
-                <h3 class="news-title">Stalking victim sues OpenAI, claims ChatGPT fueled her abuser’s delusions and ignored her warnings</h3>
-                <p class="news-summary">OpenAI ignored three warnings that a ChatGPT user was dangerous — including its own mass-casualty fl...</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=TechCrunch%20is%20heading%20to%20Tokyo%20%E2%80%94%20and%20bringing%20the%20Startup%20Battlefield%20with%20it&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Google+Gemini+Robotics-ER+1.6+safest+robotics+model+Spot+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">TechCrunch is heading to Tokyo — and bringing the Startup Battlefield with it</h3>
-                <p class="news-summary">SusHi Tech 2026 is zeroing in on four technology domains reshaping society: AI, Robotics, Resilience...</p>
+                <h3 class="news-title">Google 发布 Gemini Robotics-ER 1.6：最安全机器人模型</h3>
+                <p class="news-summary">Google DeepMind 发布 Gemini Robotics-ER 1.6，号称"迄今最安全的机器人模型"，使机器人能够以前所未有的精度推理和理解环境。Boston Dynamics 演示了 Spot 机器人使用该模型读取压力表等仪器。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Last%2024%20hours%3A%20Save%20up%20to%20%24500%20on%20your%20TechCrunch%20Disrupt%202026%20pass&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Anthropic+Claude+Code+desktop+redesign+multi-agent+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Last 24 hours: Save up to $500 on your TechCrunch Disrupt 2026 pass</h3>
-                <p class="news-summary">This is it. Tonight is your last chance to lock in savings of up to $500 for your TechCrunch Disrupt...</p>
+                <h3 class="news-title">Anthropic 重构 Claude Code 桌面应用：多 AI 代理管理</h3>
+                <p class="news-summary">Anthropic 宣布 Claude Code 桌面应用重新设计，专注于多 AI 代理管理。新侧边栏可管理会话，支持拖放布局自定义工作区，内置终端和文件编辑器，使同时处理多个任务更加便捷。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=ChatGPT%20finally%20offers%20%24100/month%20Pro%20plan&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Gemini+Personal+Intelligence+global+rollout+Gmail+Photos+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">ChatGPT finally offers $100/month Pro plan</h3>
-                <p class="news-summary">OpenAI announced on Thursday something that power users have been asking for: a $100/month plan. Pre...</p>
+                <h3 class="news-title">Gemini 个人智能全球 rollout（除欧洲外）</h3>
+                <p class="news-summary">Gemini 个人智能功能现向全球用户开放（英国、瑞士和欧洲经济区除外）。该功能允许 Gemini 从 Gmail、Google Photos、Search 和 YouTube 观看历史中提取信息，为 Google AI Plus 和 Pro 订阅用户提供个性化体验。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Florida%20AG%20announces%20investigation%20into%20OpenAI%20over%20shooting%20that%20allegedly%20involved%20ChatGPT&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Microsoft+MAI-Image-2-Efficient+cheaper+faster+AI+image+model+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Florida AG announces investigation into OpenAI over shooting that allegedly involved ChatGPT</h3>
-                <p class="news-summary">ChatGPT had reportedly been used to plan the attack that killed two and injured five at Florida Stat...</p>
+                <h3 class="news-title">Microsoft 发布 MAI-Image-2-Efficient：更便宜更快的 AI 图像模型</h3>
+                <p class="news-summary">Microsoft 推出 MAI-Image-2-Efficient，价格比 MAI-Image-2 降低约 41%（每百万文本输入 token 5 美元，每百万图像输出 token 19.50 美元）。该模型运行速度快 22%，每 GPU 吞吐量效率提高 4 倍，在 p50 延迟基准测试中平均比 Google Gemini 3.1 Flash 系列快 40%。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=After%20data%20breach%2C%20%2410B-valued%20startup%20Mercor%20is%20having%20a%20month&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=NAACP+sues+xAI+Memphis+data+center+pollution+Clean+Air+Act+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">After data breach, $10B-valued startup Mercor is having a month</h3>
-                <p class="news-summary">After falling victim to a hacker, Mercor is facing lawsuits and reportedly losing big-name customers...</p>
+                <h3 class="news-title">NAACP 起诉 xAI 阻止孟菲斯数据中心项目</h3>
+                <p class="news-summary">NAACP 起诉 Elon Musk 的 xAI，要求阻止其在孟菲斯郊外的 Colossus 2 数据中心项目，声称该项目在未取得空气许可证的情况下运营 27 台燃气轮机，违反《清洁空气法》。NAACP 称这是"要求黑人和前沿社区承受'创新'的有毒负担"的可耻模式。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Meta%20AI%20app%20climbs%20to%20No.%205%20on%20the%20App%20Store%20after%20Muse%20Spark%20launch&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Allbirds+pivot+AI+compute+hyperscale+financing+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Meta AI app climbs to No. 5 on the App Store after Muse Spark launch</h3>
-                <p class="news-summary">The app was ranking No. 57 on the App Store just before Meta AI's new model launched. Now it's No. 5...</p>
+                <h3 class="news-title">Allbirds 转型 AI 计算：从运动鞋到"新云"公司</h3>
+                <p class="news-summary">运动鞋品牌 Allbirds 宣布向 AI 计算转型，获得 5000 万美元融资。Bloomberg 专栏作家 Matt Levine 分析称，这本质上是"以旧运动鞋公司价格买入股票，以新 AI 新云公司价格卖出"。新云市场看起来泡沫化。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Is%20Anthropic%20limiting%20the%20release%20of%20Mythos%20to%20protect%20the%20internet%20%E2%80%94%20or%20Anthropic%3F&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Traza+raises+2.1+million+Base10+AI+procurement+automation+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Is Anthropic limiting the release of Mythos to protect the internet — or Anthropic?</h3>
-                <p class="news-summary">Anthropic said this week that it limited the release of its newest model, dubbed Mythos, because it ...</p>
+                <h3 class="news-title">Traza 融资 210 万美元：AI 自动化采购工作流</h3>
+                <p class="news-summary">Traza 获得 Base10 领投的 210 万美元融资，致力于用 AI 自动化采购工作流。数十年来，采购一直是企业软件遗忘的后台部门——大型制造商和建筑公司的数十亿美元资金仍通过电子邮件、电子表格和电话流动。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Google%20and%20Intel%20deepen%20AI%20infrastructure%20partnership&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=data+centers+mandatory+energy+usage+surveys+EIA+Wired+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Google and Intel deepen AI infrastructure partnership</h3>
-                <p class="news-summary">The two tech giants are looking to co-develop custom chips, at a time when demand for CPUs is high d...</p>
+                <h3 class="news-title">数据中心将面临"强制性"能源使用调查</h3>
+                <p class="news-summary">据 Wired 披露的信件，能源信息管理局 (EIA) 计划在完成德克萨斯州、华盛顿州、华盛顿特区和北弗吉尼亚州等数据中心密集地区的试点调查后，启动全国性调查。这是对两党推动了解数据中心能耗的回应。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Sierra%E2%80%99s%20Bret%20Taylor%20says%20the%20era%20of%20clicking%20buttons%20is%20over&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=Google+Pixel+10+Camera+Coach+AI+photography+tips+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Sierra’s Bret Taylor says the era of clicking buttons is over</h3>
-                <p class="news-summary">Last month, Sierra launched Ghostwriter, an agent designed to build other agents. With this “agent a...</p>
+                <h3 class="news-title">Google Pixel 10 相机教练：AI 基础摄影建议</h3>
+                <p class="news-summary">Google Pixel 10 的相机教练功能提供基础摄影建议，如" zoom in to frame your subject"。相比之下，华为 Pura 90 的 AI 姿势推荐是否更好仍存疑——除了自拍外，被拍摄者如何看到手机上的建议？</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Amazon%20CEO%20takes%20aim%20at%20Nvidia%2C%20Intel%2C%20Starlink%2C%20more%20in%20annual%20shareholder%20letter&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=AI+democratize+tech+valuable+resources+Will+Knight+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Amazon CEO takes aim at Nvidia, Intel, Starlink, more in annual shareholder letter</h3>
-                <p class="news-summary">Andy Jassy's annual shareholder letter reads something like a diss track to a wide range of competit...</p>
+                <h3 class="news-title">AI 可能民主化科技最有价值资源之一</h3>
+                <p class="news-summary">WIRED 分析指出，AI 可能使科技行业最有价值的资源之一民主化。随着 AI 工具的普及，小型团队和个人开发者也能获得曾经只有大公司才能负担的计算能力和智能。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Final%202%20days%20to%20save%20up%20to%20%24500%20on%20your%20TechCrunch%20Disrupt%202026%20ticket&btnI=1" target="_blank" class="news-card">
+            <a href="https://www.google.com/search?q=deepfake+nude+crisis+schools+global+Matt+Burgess+2026&btnI=1" target="_blank"  class="news-card">
                 <div class="badges">
                     <span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Final 2 days to save up to $500 on your TechCrunch Disrupt 2026 ticket</h3>
-                <p class="news-summary">Ticket discounts of up to $500 will end tomorrow, April 10, at 11:59 p.m. PT. After that, prices for...</p>
+                <h3 class="news-title">学校深度伪造裸照危机比想象中更严重</h3>
+                <p class="news-summary">WIRED 调查揭示，学校中深度伪造裸照危机远比公众认知的严重。这一全球性问题正在影响成千上万名学生，亟需法律和技术解决方案。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=AI+agents+dating+life+automation+Joel+Khalili+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">AI 代理即将介入你的约会生活</h3>
+                <p class="news-summary">AI 代理正开始进入约会领域，从自动回复消息到策划约会建议。这一趋势引发了关于真实人际关系和 AI 介入边界的讨论。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=Meta+new+AI+model+Muse+Spark+Zuckerberg+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Meta 新 AI 模型让扎克伯格坐上"大孩子桌"</h3>
+                <p class="news-summary">Meta 发布新 AI 模型 Muse/Spark，标志着 Mark Zuckerberg 在 AI 竞赛中获得重要席位。该模型在开源和闭源之间找到平衡，可能改变 AI 竞争格局。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=US+Army+Victor+chatbot+combat+AI+system+soldiers+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">美军正在为战斗开发 AI 聊天机器人</h3>
+                <p class="news-summary">美国陆军正在开发名为"Victor"的 AI 聊天机器人系统，供士兵在战斗中使用。这一军事 AI 应用引发了关于自主武器系统和 AI 伦理的讨论。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=Elon+Musk+Terafab+chip+partnership+Intel+5+questions+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Elon Musk 的 Terafab 芯片合作：与 Intel 的五大疑问</h3>
+                <p class="news-summary">Elon Musk 的 Terafab 与 Intel 的芯片合作引发行业关注。WIRED 分析了这一合作伙伴关系的五大关键问题，包括技术可行性、市场竞争和产能挑战。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=Black+Forest+Labs+70+person+AI+image+startup+Silicon+Valley+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">70 人 AI 图像初创公司挑战硅谷巨头</h3>
+                <p class="news-summary">Black Forest Labs，这家仅 70 人的 AI 图像初创公司，正挑战硅谷巨头的统治地位。该公司以其高效的团队和创新的图像生成技术获得行业关注。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=AI+podcasters+relationship+advice+keep+man+happy+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">AI 播客主播热衷于告诉你如何留住男人</h3>
+                <p class="news-summary">一个奇怪的趋势正在兴起：AI 生成的播客主播热衷于提供关系建议，特别是"如何留住男人"。这一现象引发了关于 AI 内容质量和性别刻板印象的讨论。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=Meta+AI+health+data+terrible+advice+Reece+Rogers+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Meta 新 AI 索要健康数据并给出糟糕建议</h3>
+                <p class="news-summary">WIRED 记者实测 Meta 新 AI 功能，发现其索要原始健康数据后给出了糟糕的医疗建议。这一事件凸显了 AI 健康咨询的风险和监管必要性。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=OpenAI+backs+bill+limit+liability+AI+mass+deaths+financial+disasters+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">OpenAI 支持限制 AI 责任法案</h3>
+                <p class="news-summary">OpenAI 支持一项法案，该法案将限制 AI 公司在 AI 导致的大规模死亡或金融灾难中的责任。这一立场引发了关于 AI 公司问责制的激烈辩论。</p>
+                <span class="news-link">直达新闻详情 →</span>
+            </a>
+            <a href="https://www.google.com/search?q=Anthropic+opposes+AI+liability+bill+OpenAI+backed+2026&btnI=1" target="_blank"  class="news-card">
+                <div class="badges">
+                    <span class="source-badge">🔍 Google 直达</span>
+                </div>
+                <h3 class="news-title">Anthropic 反对 OpenAI 支持的极端 AI 责任法案</h3>
+                <p class="news-summary">Anthropic 公开反对 OpenAI 支持的极端 AI 责任法案。两家 AI 巨头在监管立场上的分歧反映了行业内部对 AI 治理的不同看法。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
         </div>
 
-        <h2 class="section-title"><span class="emoji">🦞</span>OpenClaw 龙虾资讯</h2>
+        <h2 class="section-title"><span class="emoji">🦞</span>openclaw 龙虾资讯</h2>
         <div class="news-grid">
-            
-            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.9%3A%20openclaw%202026.4.9&btnI=1" target="_blank" class="news-card hot openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.1%3A%20openclaw%202026.4.1&btnI=1" target="_blank"  class="news-card hot openclaw">
                 <div class="badges">
                     <span class="hot-badge">🔥 热门</span><span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw v2026.4.9: openclaw 2026.4.9</h3>
-                <p class="news-summary">### Changes
-
-- Memory/dreaming: add a grounded REM backfill lane with historical `rem-harness --path`, diary commit/reset flows, cleaner durable-fact extraction, and live short-term promotion integrat</p>
+                <h3 class="news-title">OpenClaw v2026.4.1: openclaw 2026.4.1</h3>
+                <p class="news-summary">新增 `/tasks` 命令，为当前会话提供聊天原生后台任务板。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.9-beta.1%3A%20openclaw%202026.4.9-beta.1&btnI=1" target="_blank" class="news-card openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.1-beta.1&btnI=1" target="_blank"  class="news-card openclaw">
                 <div class="badges">
                     <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw v2026.4.9-beta.1: openclaw 2026.4.9-beta.1</h3>
-                <p class="news-summary">
-### Changes
-
-- Memory/dreaming: add a grounded REM backfill lane with historical `rem-harness --path`, diary commit/reset flows, cleaner durable-fact extraction, and live short-term promotion integra</p>
+                <h3 class="news-title">OpenClaw v2026.4.1-beta.1</h3>
+                <p class="news-summary">任务板功能测试版发布，支持会话内任务管理。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20v2026.4.8%3A%20openclaw%202026.4.8&btnI=1" target="_blank" class="news-card openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20v2026.3.31&btnI=1" target="_blank"  class="news-card openclaw">
                 <div class="badges">
                     <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw v2026.4.8: openclaw 2026.4.8</h3>
-                <p class="news-summary">
-### Fixes
-
-- Telegram/setup: load setup and secret contracts through packaged top-level sidecars so installed npm builds no longer try to import missing `dist/extensions/telegram/src/*` files during </p>
+                <h3 class="news-title">OpenClaw v2026.3.31</h3>
+                <p class="news-summary">移除重复的 nodes.run shell 包装器，统一节点执行路径。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20fix%3A%20use%20target%20agent%20dir%20for%20directive%20persistence&btnI=1" target="_blank" class="news-card openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20fix%28msteams%29&btnI=1" target="_blank"  class="news-card openclaw">
                 <div class="badges">
                     <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw Update: fix: use target agent dir for directive persistence</h3>
-                <p class="news-summary">fix: use target agent dir for directive persistence</p>
+                <h3 class="news-title">fix(msteams): prevent duplicate text</h3>
+                <p class="news-summary">修复 Teams 流式响应超过 4000 字符时的重复文本问题。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=OpenClaw%20Update%3A%20fix%28ci%29%3A%20guard%20compact%20agent%20directory%20resolution&btnI=1" target="_blank" class="news-card openclaw">
+            <a href="https://www.google.com/search?q=OpenClaw%20Matrix%20restore&btnI=1" target="_blank"  class="news-card openclaw">
                 <div class="badges">
                     <span class="openclaw-badge">🦞 OpenClaw</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">OpenClaw Update: fix(ci): guard compact agent directory resolution</h3>
-                <p class="news-summary">fix(ci): guard compact agent directory resolution</p>
+                <h3 class="news-title">Matrix: restore ordered progress</h3>
+                <p class="news-summary">恢复 Matrix 有序进度交付，支持显式流式模式。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
         </div>
 
         <h2 class="section-title"><span class="emoji">🎨</span>设计 AI</h2>
         <div class="news-grid">
-            
-            <a href="https://www.google.com/search?q=Has%20Adobe%20just%20solved%20one%20of%20AI%20video%27s%20biggest%20problems%3F&btnI=1" target="_blank" class="news-card design">
+            <a href="https://www.google.com/search?q=Google+Chrome+AI+powered+Skills+feature+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
                     <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Has Adobe just solved one of AI video's biggest problems?</h3>
-                <p class="news-summary">It thinks MotionStream could transform photo editing too....</p>
+                <h3 class="news-title">Google Chrome 推出 AI 驱动"技能"功能</h3>
+                <p class="news-summary">Google Chrome 浏览器推出新的 AI 驱动"技能"功能，允许用户通过自然语言指令完成复杂任务。这一功能将 AI 助手深度集成到浏览器工作流中。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-        </div>
-                <h3 class="news-title">即梦 AI 视频生成功能上线</h3>
-                <p class="news-summary">字节跳动即梦 2.0 支持文本生成 1080p 视频，最长 15 秒，效果惊艳。</p>
-                <span class="news-link">直达新闻详情 →</span>
-            </a>
-
-            <a href="https://www.google.com/search?q=Midjourney+V7+features" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=Unitree+R1+humanoid+robot+4370+dollars+AliExpress+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Midjourney V7 细节控制增强</h3>
-                <p class="news-summary">V7 版本新增局部重绘、角色一致性、风格锁定等专业功能。</p>
+                <h3 class="news-title">可购买 4370 美元人形机器人：Unitree R1 登陆 AliExpress</h3>
+                <p class="news-summary">宇树科技 (Unitree) 的 R1 人形机器人现可在 AliExpress 购买，售价 4370 美元。这一价格点标志着人形机器人开始进入消费者市场，为设计师和开发者提供新的创作平台。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Adobe+Firefly+3D" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=AI+button+wearable+ex+Apple+engineers+iPod+Shuffle+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Adobe Firefly 3D 生成测试</h3>
-                <p class="news-summary">Adobe 测试 3D 模型生成功能，可从文本直接创建可编辑 3D 资产。</p>
+                <h3 class="news-title">AI 按钮可穿戴设备：前苹果工程师的新作</h3>
+                <p class="news-summary">前苹果工程师推出一款 AI 按钮可穿戴设备，外观类似 iPod Shuffle。这一极简设计探索了 AI 交互的新形式，为产品设计师提供灵感。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Figma+AI+auto+layout" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=Pro+Iran+AI+meme+machine+Lego+cartoons+Trump+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Figma AI 自动布局功能</h3>
-                <p class="news-summary">Figma AI 可根据内容自动调整布局，大幅提升设计效率。</p>
+                <h3 class="news-title">亲伊朗 AI 模因机器：用 AI 乐高卡通调侃特朗普</h3>
+                <p class="news-summary">一个亲伊朗的 AI 模因机器使用 AI 生成的乐高卡通调侃特朗普。这一案例展示了 AI 在政治宣传和视觉创意中的应用，引发关于 AI 生成内容伦理的讨论。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Canva+Magic+Edit+2.0" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=Black+Forest+Labs+AI+image+generation+startup+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Canva 魔法编辑 2.0</h3>
-                <p class="news-summary">Canva 升级魔法编辑工具，支持更精准的局部修改和对象替换。</p>
+                <h3 class="news-title">AI 图像生成：Black Forest Labs 挑战巨头</h3>
+                <p class="news-summary">Black Forest Labs 作为新兴 AI 图像生成公司，正挑战 Stable Diffusion、DALL-E 和 Midjourney 等巨头。其技术创新为设计师提供了新的创作工具选择。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Leonardo+AI+game+assets" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=Trump+AI+generated+image+Jesus+healing+Ethan+Hawke+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Leonardo AI 游戏资产工具</h3>
-                <p class="news-summary">Leonardo 推出游戏资产专用模型，支持角色、场景、道具一键生成。</p>
+                <h3 class="news-title">特朗普 AI 生成图像自称"治愈"伊桑·霍克</h3>
+                <p class="news-summary">在攻击教皇利奥十四世"对犯罪软弱"后，特朗普在 Truth Social 发布了一张 AI 生成图像，将自己描绘成耶稣形象"治愈"伊桑·霍克。这张图片被称为"巅峰深度伪造美国"，展示了 AI 图像生成在政治传播中的影响力。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=Clipdrop+background+removal" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=Microsoft+MAI-Image-2-Efficient+designers+AI+image+tool+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">Clipdrop 背景移除升级</h3>
-                <p class="news-summary">Stability AI 的 Clipdrop 工具背景移除精度提升至 99%。</p>
+                <h3 class="news-title">微软 MAI-Image-2-Efficient：设计师的新工具</h3>
+                <p class="news-summary">微软新发布的 MAI-Image-2-Efficient 为设计师提供更便宜、更快的 AI 图像生成工具。41% 的价格降低和 22% 的速度提升使其成为专业设计工作流的有吸引力选择。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
-
-            <a href="https://www.google.com/search?q=哩布哩布+SDXL+模型" target="_blank"  class="news-card design">
+            <a href="https://www.google.com/search?q=AI+art+democratization+mainstream+adoption+2026&btnI=1" target="_blank"  class="news-card design">
                 <div class="badges">
-                    <span class="design-badge">🎨 设计</span>
-                    <span class="source-badge">🔍 Google 直达</span>
+                    <span class="design-badge">🎨 设计</span><span class="source-badge">🔍 Google 直达</span>
                 </div>
-                <h3 class="news-title">哩布哩布 SDXL 模型库扩展</h3>
-                <p class="news-summary">LiblibAI 新增 500+ SDXL 微调模型，覆盖多种艺术风格。</p>
+                <h3 class="news-title">AI 艺术民主化：从小众到主流</h3>
+                <p class="news-summary">随着 AI 图像生成工具的普及和价格下降，AI 艺术正从小众爱好走向主流创作。设计师、艺术家和普通用户都能利用 AI 工具实现创意愿景，这一趋势正在重塑创意产业。</p>
                 <span class="news-link">直达新闻详情 →</span>
             </a>
         </div>
     </div>
 
-    <footer class="footer">
+    <footer>
         <p>📊 今日统计：全球动态 20 条 | 🦞 OpenClaw 5 条 | 设计 AI 8 条</p>
-        <p>🔗 <a href="https://ttong-wang-1.github.io/ai-daily-news/" target="_blank" >GitHub Pages</a> | <a href="https://feishu.cn/docx/K8FhdF2tTo9UtRxNVoOcO2q2ndf" target="_blank" >飞书文档</a></p>
+        <p>🔗 <a href="https://github.com/TTONG-WANG-1/ai-daily-news" target="_blank">GitHub 仓库</a></p>
         <p style="margin-top: 16px; color: var(--text-tertiary);">© 2026 AI Daily News. Generated automatically.</p>
     </footer>
 </body>
